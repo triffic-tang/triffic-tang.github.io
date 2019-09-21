@@ -1,5 +1,5 @@
-baseurl = "triffic-tang.github.io/public"
-title = "Huabing Blog"
+baseurl = ""
+title = "Tangoo Blog"
 theme = "hugo-theme-cleanwhite"
 languageCode = "en-us"
 # Enable comments by entering your Disqus shortname
