@@ -1,4 +1,4 @@
-baseurl = "triffic-tang.github.io"
+baseurl = ""
 title = "Huabing Blog"
 theme = "hugo-theme-cleanwhite"
 languageCode = "en-us"
