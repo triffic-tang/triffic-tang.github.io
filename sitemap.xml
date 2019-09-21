@@ -3,236 +3,236 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/post/readme/</loc>
+    <loc>tangoo.fun/post/readme/</loc>
     <lastmod>2019-01-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/</loc>
+    <loc>tangoo.fun/post/</loc>
     <lastmod>2019-01-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/</loc>
+    <loc>tangoo.fun/</loc>
     <lastmod>2019-01-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/</loc>
+    <loc>tangoo.fun/categories/</loc>
     <lastmod>2018-06-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/istio/</loc>
+    <loc>tangoo.fun/tags/istio/</loc>
     <lastmod>2018-06-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/2018/06/04/introducing-the-istio-v1alpha3-routing-api/</loc>
+    <loc>tangoo.fun/2018/06/04/introducing-the-istio-v1alpha3-routing-api/</loc>
     <lastmod>2018-06-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/</loc>
+    <loc>tangoo.fun/tags/</loc>
     <lastmod>2018-06-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/tech/</loc>
+    <loc>tangoo.fun/categories/tech/</loc>
     <lastmod>2018-06-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/2018/06/02/istio08/</loc>
+    <loc>tangoo.fun/2018/06/02/istio08/</loc>
     <lastmod>2018-06-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/2018/05/24/set_up_my_ubuntu_desktop/</loc>
+    <loc>tangoo.fun/2018/05/24/set_up_my_ubuntu_desktop/</loc>
     <lastmod>2018-05-24T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/tips/</loc>
+    <loc>tangoo.fun/categories/tips/</loc>
     <lastmod>2018-05-24T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/ubuntu/</loc>
+    <loc>tangoo.fun/tags/ubuntu/</loc>
     <lastmod>2018-05-24T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/microservice/</loc>
+    <loc>tangoo.fun/tags/microservice/</loc>
     <lastmod>2018-05-23T18:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/security/</loc>
+    <loc>tangoo.fun/tags/security/</loc>
     <lastmod>2018-05-23T18:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/2018/05/23/external_system_auth/</loc>
+    <loc>tangoo.fun/2018/05/23/external_system_auth/</loc>
     <lastmod>2018-05-23T18:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/2018/05/23/service_2_service_auth/</loc>
+    <loc>tangoo.fun/2018/05/23/service_2_service_auth/</loc>
     <lastmod>2018-05-23T15:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/2018/05/22/user_authentication_authorization/</loc>
+    <loc>tangoo.fun/2018/05/22/user_authentication_authorization/</loc>
     <lastmod>2018-05-23T10:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/2018/05/23/istio-auto-injection-with-webhook/</loc>
+    <loc>tangoo.fun/2018/05/23/istio-auto-injection-with-webhook/</loc>
     <lastmod>2018-05-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/kubernetes/</loc>
+    <loc>tangoo.fun/tags/kubernetes/</loc>
     <lastmod>2018-05-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/life/</loc>
+    <loc>tangoo.fun/categories/life/</loc>
     <lastmod>2018-05-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/travel/</loc>
+    <loc>tangoo.fun/tags/travel/</loc>
     <lastmod>2018-05-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/2018/05/01/may-day-jiulonghu/</loc>
+    <loc>tangoo.fun/2018/05/01/may-day-jiulonghu/</loc>
     <lastmod>2018-05-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/helm/</loc>
+    <loc>tangoo.fun/tags/helm/</loc>
     <lastmod>2018-04-16T15:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/2018/04/16/using-helm-to-deploy-to-kubernetes/</loc>
+    <loc>tangoo.fun/2018/04/16/using-helm-to-deploy-to-kubernetes/</loc>
     <lastmod>2018-04-16T15:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/api-gateway/</loc>
+    <loc>tangoo.fun/tags/api-gateway/</loc>
     <lastmod>2018-04-11T09:32:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/service-mesh/</loc>
+    <loc>tangoo.fun/tags/service-mesh/</loc>
     <lastmod>2018-04-11T09:32:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/2018/04/11/service-mesh-vs-api-gateway/</loc>
+    <loc>tangoo.fun/2018/04/11/service-mesh-vs-api-gateway/</loc>
     <lastmod>2018-04-11T09:32:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/2018/03/29/what-is-service-mesh-and-istio/</loc>
+    <loc>tangoo.fun/2018/03/29/what-is-service-mesh-and-istio/</loc>
     <lastmod>2018-03-29T12:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/docker/</loc>
+    <loc>tangoo.fun/tags/docker/</loc>
     <lastmod>2018-03-13T18:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/tips/</loc>
+    <loc>tangoo.fun/tags/tips/</loc>
     <lastmod>2018-03-13T18:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/2018/03/13/use-docker-behind-http-proxy/</loc>
+    <loc>tangoo.fun/2018/03/13/use-docker-behind-http-proxy/</loc>
     <lastmod>2018-03-13T18:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/vim/</loc>
+    <loc>tangoo.fun/tags/vim/</loc>
     <lastmod>2018-02-09T11:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/2018/02/09/vim-tips/</loc>
+    <loc>tangoo.fun/2018/02/09/vim-tips/</loc>
     <lastmod>2018-02-09T11:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/2018/02/09/docker-without-sudo/</loc>
+    <loc>tangoo.fun/2018/02/09/docker-without-sudo/</loc>
     <lastmod>2018-02-09T10:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/2018/05/22/user_authentication_authorization/</loc>
+    <loc>tangoo.fun/2018/05/22/user_authentication_authorization/</loc>
     <lastmod>2018-02-03T12:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/nginmesh/</loc>
+    <loc>tangoo.fun/tags/nginmesh/</loc>
     <lastmod>2018-01-02T12:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/2018/01/02/nginmesh-install/</loc>
+    <loc>tangoo.fun/2018/01/02/nginmesh-install/</loc>
     <lastmod>2018-01-02T12:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/2017/11/28/access-application-from-outside/</loc>
+    <loc>tangoo.fun/2017/11/28/access-application-from-outside/</loc>
     <lastmod>2017-11-28T12:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/2017/11/08/istio-canary-release/</loc>
+    <loc>tangoo.fun/2017/11/08/istio-canary-release/</loc>
     <lastmod>2017-11-08T15:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/2017/11/07/istio-traffic-shifting/</loc>
+    <loc>tangoo.fun/2017/11/07/istio-traffic-shifting/</loc>
     <lastmod>2017-11-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/2017/11/04/istio-install_and_example/</loc>
+    <loc>tangoo.fun/2017/11/04/istio-install_and_example/</loc>
     <lastmod>2017-11-04T12:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/2017/11/03/hello-world/</loc>
+    <loc>tangoo.fun/2017/11/03/hello-world/</loc>
     <lastmod>2017-11-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/search/placeholder/</loc>
+    <loc>tangoo.fun/search/placeholder/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/top/about/</loc>
+    <loc>tangoo.fun/top/about/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/top/books/</loc>
+    <loc>tangoo.fun/top/books/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/search/</loc>
+    <loc>tangoo.fun/search/</loc>
   </url>
   
   <url>
-    <loc>/top/</loc>
+    <loc>tangoo.fun/top/</loc>
   </url>
   
 </urlset>

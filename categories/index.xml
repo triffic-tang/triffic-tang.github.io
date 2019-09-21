@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Tangoo Blog</title>
-    <link>/categories/</link>
+    <link>tangoo.fun/categories/</link>
     <description>Recent content in Categories on Tangoo Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 04 Jun 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="tangoo.fun/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Tech</title>
-      <link>/categories/tech/</link>
+      <link>tangoo.fun/categories/tech/</link>
       <pubDate>Mon, 04 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>/categories/tech/</guid>
+      <guid>tangoo.fun/categories/tech/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tips</title>
-      <link>/categories/tips/</link>
+      <link>tangoo.fun/categories/tips/</link>
       <pubDate>Thu, 24 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>/categories/tips/</guid>
+      <guid>tangoo.fun/categories/tips/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Life</title>
-      <link>/categories/life/</link>
+      <link>tangoo.fun/categories/life/</link>
       <pubDate>Tue, 01 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>/categories/life/</guid>
+      <guid>tangoo.fun/categories/life/</guid>
       <description></description>
     </item>
     
