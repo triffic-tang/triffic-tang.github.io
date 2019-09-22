@@ -105,15 +105,7 @@
                     </li>
                     
                     <li>
-                        <a href="/categories/life">life</a>
-                    </li>
-                    
-                    <li>
                         <a href="/categories/tech">tech</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/tips">tips</a>
                     </li>
                     
                     
@@ -218,31 +210,6 @@
 <hr>
 
 <div class="post-preview">
-    <a href="http://justtang.com/2018/06/02/istio08/">
-        <h2 class="post-title">
-            Istio 0.8 Release发布
-        </h2>
-	
-        <h3 class="post-subtitle">
-            来自Istio的儿童节礼物
-        </h3>
-	
-        <div class="post-content-preview">
-	
-            在6月1日这一天的早上，Istio社区宣布发布0.8 Release，除了常规的故障修复和性能改进外，这个儿童节礼物里面还有什么值得期待内容呢？让我们来看一看：
-        
-        </div>
-    </a>
-    <p class="post-meta">
-    Posted by     &#34;赵化冰&#34; Saturday, June 2, 2018
-    
-    
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
     <a href="http://justtang.com/2018/05/23/external_system_auth/">
         <h2 class="post-title">
             微服务安全沉思录之三
@@ -268,18 +235,18 @@
 <hr>
 
 <div class="post-preview">
-    <a href="http://justtang.com/2018/05/23/service_2_service_auth/">
+    <a href="http://justtang.com/2018/05/23/istio-auto-injection-with-webhook/">
         <h2 class="post-title">
-            微服务安全沉思录之二
+            Istio Sidecar自动注入原理
         </h2>
 	
         <h3 class="post-subtitle">
-            服务间认证与鉴权
+            Kubernetes webhook扩展机制解析
         </h3>
 	
         <div class="post-content-preview">
 	
-            除来自用户的访问请求以外，微服务应用中的各个微服务相互之间还有大量的访问,根据应用系统数据敏感程度不同，对于系统内微服务的访问也需要进行相应的安全控制。
+            Kubernets 1.9版本引入了Admission Webhook(web 回调)扩展机制，通过Webhook,开发者可以非常灵活地对Kubernets API Server的功能进行扩展，在API Server创建资源时对资源进行验证或者修改。 Istio 0.7版本就利用了Kubernets webhook实现了sidecar的自动注入。
         
         </div>
     </a>
@@ -293,23 +260,44 @@
 <hr>
 
 <div class="post-preview">
-    <a href="http://justtang.com/2018/05/22/user_authentication_authorization/">
+    <a href="http://justtang.com/2018/04/11/service-mesh-vs-api-gateway/">
         <h2 class="post-title">
-            微服务安全沉思录之一
+            Service Mesh 和 API Gateway的关系探讨（译文）
         </h2>
-	
-        <h3 class="post-subtitle">
-            用户访问认证与鉴权
-        </h3>
 	
         <div class="post-content-preview">
 	
-            这段时间对之前微服务安全相关的一些想法进行了进一步总结和归纳，理清在之前文章里面没有想得太清楚的地方，例如服务间的认证与鉴权以及用户身份在服务调用链中的传递。在这一系列博客里面将分为三个部分对微服务安全进行系统阐述：用户访问认证与鉴权，服务间认证与鉴权，外部系统访问控制。
+            API Gateway和Service Mesh的关系是我最近一直在思考的问题，也和同事及社区的朋友之间进行了一些讨论。这篇短文很清晰地总结了两者之间的相似之处以及这两者在微服务架构中的不同用途。
         
         </div>
     </a>
     <p class="post-meta">
-    Posted by     &#34;赵化冰&#34; Wednesday, May 23, 2018
+    Posted by 赵化冰 Wednesday, April 11, 2018
+    
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="http://justtang.com/2018/03/29/what-is-service-mesh-and-istio/">
+        <h2 class="post-title">
+            谈谈微服务架构中的基础设施：Service Mesh与Istio
+        </h2>
+	
+        <h3 class="post-subtitle">
+            Service Mesh模式及Istio开源项目介绍
+        </h3>
+	
+        <div class="post-content-preview">
+	
+            作为一种架构模式，微服务将复杂系统切分为数十乃至上百个小服务，每个服务负责实现一个独立的业务逻辑。这些小服务易于被小型的软件工程师团队所理解和修改，并带来了语言和框架选择灵活性，缩短应用开发上线时间，可根据不同的工作负载和资源要求对服务进行独立缩扩容等优势。另一方面，当应用被拆分为多个微服务进程后，进程内的方法调用变成了了进程间的远程调用。引入了对大量服务的连接、管理和监控的复杂性,本文介绍了Service Mesh模式如何应对微服务架构的这些挑战，以及Service Mesh的明星开源项目Istio。
+        
+        </div>
+    </a>
+    <p class="post-meta">
+    Posted by 赵化冰 Thursday, March 29, 2018
     
     
     </p>
@@ -320,15 +308,6 @@
 
             
 
-
-<ul class="pager">
-    
-    
-    <li class="next">
-        <a href="/categories/tech/page/2/">Older Posts &rarr;</a>
-    </li>
-    
-</ul>
 
 
        	</div>
@@ -352,19 +331,11 @@
                 
             
                 
-            
-                
-            
-                
                     <a href="/tags/istio" title="istio">
                         istio
                     </a>
                 
             
-                
-                    <a href="/tags/kubernetes" title="kubernetes">
-                        kubernetes
-                    </a>
                 
             
                 
@@ -376,21 +347,9 @@
                 
             
                 
-                    <a href="/tags/security" title="security">
-                        security
-                    </a>
-                
-            
-                
                     <a href="/tags/service-mesh" title="service-mesh">
                         service-mesh
                     </a>
-                
-            
-                
-            
-                
-            
                 
             
         </div>
@@ -403,12 +362,8 @@
 	<hr><h5><a href="/top/about">ABOUT ME</a></h5>
         <div class="short-about">
             
-            <a href="/top/about">
-               <img src="/img/zhaohuabing.png" alt="avatar" style="cursor: pointer" />
-            </a>
             
-            
-                <p>Software Developer, Open Source Enthusiast and Life Adventurer</p>
+                <p>Software Developer</p>
             
            
            <ul class="list-inline"> 
@@ -429,7 +384,7 @@
                
                
                <li>
-                   <a target="_blank" href="https://github.com/yourgithub">
+                   <a target="_blank" href="https://github.com/triffic-tang">
                        <span class="fa-stack fa-lg">
                            <i class="fa fa-circle fa-stack-2x"></i>
                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -508,7 +463,7 @@
                    
                     
                     <li>
-                        <a href="mailto:youremail@gmail.com">
+                        <a href="mailto:triffic.tang@gmail.com">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
@@ -527,7 +482,7 @@
                     
                     
                     <li>
-                        <a target="_blank" href="https://github.com/yourgithub">
+                        <a target="_blank" href="https://github.com/triffic-tang">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-github fa-stack-1x fa-inverse"></i>

@@ -21,15 +21,6 @@
     </item>
     
     <item>
-      <title>ubuntu</title>
-      <link>http://justtang.com/tags/ubuntu/</link>
-      <pubDate>Thu, 24 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://justtang.com/tags/ubuntu/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Microservice</title>
       <link>http://justtang.com/tags/microservice/</link>
       <pubDate>Wed, 23 May 2018 18:00:00 +0000</pubDate>
@@ -57,24 +48,6 @@
     </item>
     
     <item>
-      <title>Travel</title>
-      <link>http://justtang.com/tags/travel/</link>
-      <pubDate>Tue, 01 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://justtang.com/tags/travel/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Helm</title>
-      <link>http://justtang.com/tags/helm/</link>
-      <pubDate>Mon, 16 Apr 2018 15:00:00 +0000</pubDate>
-      
-      <guid>http://justtang.com/tags/helm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>API Gateway</title>
       <link>http://justtang.com/tags/api-gateway/</link>
       <pubDate>Wed, 11 Apr 2018 09:32:00 +0000</pubDate>
@@ -84,38 +57,11 @@
     </item>
     
     <item>
-      <title>service Mesh</title>
+      <title>Service Mesh</title>
       <link>http://justtang.com/tags/service-mesh/</link>
       <pubDate>Wed, 11 Apr 2018 09:32:00 +0000</pubDate>
       
       <guid>http://justtang.com/tags/service-mesh/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Docker</title>
-      <link>http://justtang.com/tags/docker/</link>
-      <pubDate>Tue, 13 Mar 2018 18:00:00 +0000</pubDate>
-      
-      <guid>http://justtang.com/tags/docker/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tips</title>
-      <link>http://justtang.com/tags/tips/</link>
-      <pubDate>Tue, 13 Mar 2018 18:00:00 +0000</pubDate>
-      
-      <guid>http://justtang.com/tags/tips/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>nginmesh</title>
-      <link>http://justtang.com/tags/nginmesh/</link>
-      <pubDate>Tue, 02 Jan 2018 12:00:00 +0000</pubDate>
-      
-      <guid>http://justtang.com/tags/nginmesh/</guid>
       <description></description>
     </item>
     
