@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Tangoo Blog</title>
-    <link>justtang.com/categories/</link>
+    <link>http://justtang.com/categories/</link>
     <description>Recent content in Categories on Tangoo Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 04 Jun 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="justtang.com/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://justtang.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Tech</title>
-      <link>justtang.com/categories/tech/</link>
+      <link>http://justtang.com/categories/tech/</link>
       <pubDate>Mon, 04 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>justtang.com/categories/tech/</guid>
+      <guid>http://justtang.com/categories/tech/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tips</title>
-      <link>justtang.com/categories/tips/</link>
+      <link>http://justtang.com/categories/tips/</link>
       <pubDate>Thu, 24 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>justtang.com/categories/tips/</guid>
+      <guid>http://justtang.com/categories/tips/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Life</title>
-      <link>justtang.com/categories/life/</link>
+      <link>http://justtang.com/categories/life/</link>
       <pubDate>Tue, 01 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>justtang.com/categories/life/</guid>
+      <guid>http://justtang.com/categories/life/</guid>
       <description></description>
     </item>
     
