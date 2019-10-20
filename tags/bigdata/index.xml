@@ -12,15 +12,6 @@
     
     
     <item>
-      <title>Evaluation Metrics of Spark Machine Learning</title>
-      <link>http://justtang.com/2019/10/20/evaluation-metrics-of-spark-machine-learning/</link>
-      <pubDate>Sun, 20 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://justtang.com/2019/10/20/evaluation-metrics-of-spark-machine-learning/</guid>
-      <description>众所周知，SparkML组件提供了当前主流的机器学习算法实现，便于开发者在各个应用场景中选择合适的机器学习算法进行快速迭代验证。 当然在每个场</description>
-    </item>
-    
-    <item>
       <title>大数据Hive之入门必备</title>
       <link>http://justtang.com/2019/10/20/introduction-to-hive/</link>
       <pubDate>Sun, 20 Oct 2019 00:00:00 +0000</pubDate>
