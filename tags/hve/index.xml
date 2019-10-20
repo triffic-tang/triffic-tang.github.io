@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>AI on Tangoo Blog</title>
-    <link>http://justtang.com/tags/ai/</link>
-    <description>Recent content in AI on Tangoo Blog</description>
+    <title>HVE on Tangoo Blog</title>
+    <link>http://justtang.com/tags/hve/</link>
+    <description>Recent content in HVE on Tangoo Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 20 Oct 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://justtang.com/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://justtang.com/tags/hve/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,15 +18,6 @@
       
       <guid>http://justtang.com/2019/10/20/introduction-to-hive/</guid>
       <description>在「聊聊大数据平台的典型应用场景」这篇文章中介绍了团队目前搭建大数据平台的实践，以及如何在实际生产环境中应用我们的大数据平台也就是寻找典型的</description>
-    </item>
-    
-    <item>
-      <title>大数据技术与人工智能技术之间的关系</title>
-      <link>http://justtang.com/2019/10/20/relationship-between-bigdata-and-ai/</link>
-      <pubDate>Sun, 20 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://justtang.com/2019/10/20/relationship-between-bigdata-and-ai/</guid>
-      <description>重读【智能时代-技术的拐点】章节有感，以及自己的一些思考。 大家似乎都有这样一个直观的感性认识，人工智能从2015，16年开始似乎又进入了一个</description>
     </item>
     
   </channel>
