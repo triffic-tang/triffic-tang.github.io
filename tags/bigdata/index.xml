@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Introdcution to Tablesaw</title>
+      <link>http://justtang.com/2018/10/20/introduction-to-tablesaw/</link>
+      <pubDate>Sun, 20 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://justtang.com/2018/10/20/introduction-to-tablesaw/</guid>
+      <description>最近一直在学习大数据相关的内容，技术坑很多，水很深。偶然间在一位博主的博客中看到了「Tablesaw」这款开源工具，号称「MAKING BIGDATA SAMLL A</description>
+    </item>
+    
+    <item>
       <title>大数据Hive之入门必备</title>
       <link>http://justtang.com/2019/10/20/introduction-to-hive/</link>
       <pubDate>Sun, 20 Oct 2019 00:00:00 +0000</pubDate>

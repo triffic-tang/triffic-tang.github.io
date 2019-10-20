@@ -15,15 +15,15 @@
     
 
     
-    <meta name="title" content="Istio Sidecar自动注入原理" />
-    <meta property="og:title" content="Istio Sidecar自动注入原理" />
-    <meta property="twitter:title" content="Istio Sidecar自动注入原理" />
+    <meta name="title" content="Introdcution to Tablesaw" />
+    <meta property="og:title" content="Introdcution to Tablesaw" />
+    <meta property="twitter:title" content="Introdcution to Tablesaw" />
     
 
     
-    <meta name="description" content="Kubernets 1.9版本引入了Admission Webhook(web 回调)扩展机制，通过Webhook,开发者可以非常灵活地对Kubernets API Server的功能进行扩展，在API Server创建资源时对资源进行验证或者修改。 Istio 0.7版本就利用了Kubernets webhook实现了sidecar的自动注入。">
-    <meta property="og:description" content="Kubernets 1.9版本引入了Admission Webhook(web 回调)扩展机制，通过Webhook,开发者可以非常灵活地对Kubernets API Server的功能进行扩展，在API Server创建资源时对资源进行验证或者修改。 Istio 0.7版本就利用了Kubernets webhook实现了sidecar的自动注入。" />
-    <meta property="twitter:description" content="Kubernets 1.9版本引入了Admission Webhook(web 回调)扩展机制，通过Webhook,开发者可以非常灵活地对Kubernets API Server的功能进行扩展，在API Server创建资源时对资源进行验证或者修改。 Istio 0.7版本就利用了Kubernets webhook实现了sidecar的自动注入。" />
+    <meta name="description" content="Tangoo，程序员, 开源爱好者，生活探险家 | 这里是 Tangoo 的博客，与你一起发现更大的世界。">
+    <meta property="og:description" content="Tangoo，程序员, 开源爱好者，生活探险家 | 这里是 Tangoo 的博客，与你一起发现更大的世界。" />
+    <meta property="twitter:description" content="Tangoo，程序员, 开源爱好者，生活探险家 | 这里是 Tangoo 的博客，与你一起发现更大的世界。" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="Tangoo, Tangoo的网络日志, Tangoo的博客, Blog, 博客, 个人网站, 互联网, Web, 云原生, PaaS, Istio, Kubernetes, 微服务, Microservice">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Istio Sidecar自动注入原理-Tangoo的博客 | Tangoo Blog</title>
+    <title>Introdcution to Tablesaw-Tangoo的博客 | Tangoo Blog</title>
 
-    <link rel="canonical" href="/2018/05/23/istio-auto-injection-with-webhook/">
+    <link rel="canonical" href="/2018/10/20/introduction-to-tablesaw/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 	
@@ -157,7 +157,7 @@
 
 <style type="text/css">
     header.intro-header {
-        background-image: url('https://img.zhaohuabing.com/in-post/2018-4-25-istio-auto-injection-with-webhook/lion.jpg')
+        background-image: url('https://github.com/triffic-tang/triffic-tang.github.io/blob/master/img/201910/nature.jpg?raw=true')
     }
 </style>
 <header class="intro-header">
@@ -167,24 +167,24 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/kubernetes" title="Kubernetes">
-                            Kubernetes
+                        <a class="tag" href="/tags/bigdata" title="BIGDATA">
+                            BIGDATA
                         </a>
                         
-                        <a class="tag" href="/tags/istio" title="Istio">
-                            Istio
+                        <a class="tag" href="/tags/tablesaw" title="TABLESAW">
+                            TABLESAW
                         </a>
                         
                     </div>
-                    <h1>Istio Sidecar自动注入原理</h1>
-                    <h2 class="subheading">Kubernetes webhook扩展机制解析</h2>
+                    <h1>Introdcution to Tablesaw</h1>
+                    <h2 class="subheading">玩转大数据也许真的可以离开Hadoop</h2>
                     <span class="meta">
                         Posted by 
                         
-                                &#34;赵化冰&#34;
+                                &#34;Tango&#34;
                          
                         on 
-                        Wednesday, May 23, 2018
+                        Sunday, October 20, 2019
                         
                         
                         
@@ -216,124 +216,70 @@
 <ul>
 <li>
 <ul>
-<li><a href="#前言">前言</a></li>
-<li><a href="#什么是admission">什么是Admission</a></li>
-<li><a href="#admission-webhook">Admission webhook</a></li>
-<li><a href="#采用webhook自动注入istio-sidecar">采用Webhook自动注入Istio Sidecar</a>
+<li>
 <ul>
-<li><a href="#kubernets版本要求">Kubernets版本要求</a></li>
-<li><a href="#生成sidecar-injection-webhook的密钥和证书">生成sidecar injection webhook的密钥和证书</a></li>
-<li><a href="#将生成的数字证书配置到webhook中">将生成的数字证书配置到webhook中</a></li>
-<li><a href="#创建sidecar-injection-configmap">创建sidecar injection configmap</a></li>
-<li><a href="#部署sidecar-injection-webhook">部署sidecar injection webhook</a></li>
+<li><a href="#tablesaw简介">Tablesaw简介</a></li>
+<li><a href="#tablesaw主要功能">Tablesaw主要功能</a></li>
+<li><a href="#tablesaw适用场景">Tablesaw适用场景</a></li>
 </ul></li>
-<li><a href="#参考">参考</a></li>
 </ul></li>
 </ul>
 </nav>
                 
-                <h2 id="前言">前言</h2>
+                
 
-<hr />
+<p>最近一直在学习大数据相关的内容，技术坑很多，水很深。偶然间在一位博主的博客中看到了「Tablesaw」这款开源工具，号称「MAKING BIGDATA SAMLL AGAIN」，觉得很神奇，遂前去一探究竟。</p>
 
-<p>Kubernets 1.9版本引入了Admission Webhook(web 回调)扩展机制，通过Webhook,开发者可以非常灵活地对Kubernets API Server的功能进行扩展，在API Server创建资源时对资源进行验证或者修改。</p>
+<h3 id="tablesaw简介">Tablesaw简介</h3>
 
-<p>使用webhook的优势是不需要对API Server的源码进行修改和重新编译就可以扩展其功能。插入的逻辑实现为一个独立的web进程，通过参数方式传入到kubernets中，由kubernets在进行自身逻辑处理时对扩展逻辑进行回调。</p>
+<p>引用官网的一段介绍：</p>
 
-<p>Istio 0.7版本就利用了Kubernets webhook实现了sidecar的自动注入。</p>
+<blockquote>
+<p>Tablesaw is a high-performance, in-memory data table in Java.
+Tablesaw&rsquo;s design is driven by two ideas: First, few people need distributed analytics. On a single server, Tablesaw lets you work interactively with a 2,000,000,000 row table. (I plan to raise that ceiling, btw.) Second, it should be super easy to use: To that end I happily steal ideas from everything from spreadsheets to specialized column stores like KDB.</p>
+</blockquote>
 
-<h2 id="什么是admission">什么是Admission</h2>
+<p>我们来总结下，Tablesaw设计初衷有以下两条：</p>
 
-<hr />
+<ol>
+<li>作者认为很少有人真的需要进行分布式计算分析，在单台服务器上「Tablesaw」能支持最多20亿条数据，似乎在大多数情况下都能满足用户的计算需求；</li>
+<li>大数据工具应该简单易用，费大把劲去搭建大数据集群估计已经吓退一拨人。
+从本质上而言，我们发现「Tablesaw」就是一款基于内存，使用纯java实现的big spreadsheet。嗯，我相信你一定使用过<code>Excel</code>。</li>
+</ol>
 
-<p>Admission是Kubernets中的一个术语，指的是Kubernets API Server资源请求过程中的一个阶段。如下图所示，在API Server接收到资源创建请求时，首先会对请求进行认证和鉴权，然后经过Admission处理，最后再保存到etcd。
-<img src="https://img.zhaohuabing.com/in-post/2018-4-25-istio-auto-injection-with-webhook/admission-phase.png" alt="" />
-从图中看到，Admission中有两个重要的阶段，Mutation和Validation，这两个阶段中执行的逻辑如下：
-* Mutation</p>
+<h3 id="tablesaw主要功能">Tablesaw主要功能</h3>
 
-<p>Mutation是英文“突变”的意思,从字面上可以知道在Mutation阶段可以对请求内容进行修改。
-* Validation</p>
-
-<p>在Validation阶段不允许修改请求内容，但可以根据请求的内容判断是继续执行该请求还是拒绝该请求。</p>
-
-<h2 id="admission-webhook">Admission webhook</h2>
-
-<hr />
-
-<p>通过Admission webhook,可以加入Mutation和Validation两种类型的webhook插件，这些插件和Kubernets提供的预编译的Admission插件具有相同的能力。可以想到的用途包括：
-* 修改资源。例如Istio就通过Admin Webhook在Pod资源中增加了Envoy sidecar容器。
-* 自定义校验逻辑，例如对资源名称有一些特殊要求。或者对自定义资源的合法性进行校验。</p>
-
-<h2 id="采用webhook自动注入istio-sidecar">采用Webhook自动注入Istio Sidecar</h2>
-
-<hr />
-
-<h3 id="kubernets版本要求">Kubernets版本要求</h3>
-
-<p>webhook支持需要Kubernets1.9或者更高的版本,使用下面的命令确认kube-apiserver的Admin webhook功能已启用。</p>
-
-<pre><code>kubectl api-versions | grep admissionregistration
-
-admissionregistration.k8s.io/v1beta1
-</code></pre>
-
-<h3 id="生成sidecar-injection-webhook的密钥和证书">生成sidecar injection webhook的密钥和证书</h3>
-
-<p>Webhook使用数字证书向kube-apiserver进行身份认证，因此需要先使用工具生成密钥对，并向Istio CA申请数字证书。</p>
-
-<pre><code>./install/kubernetes/webhook-create-signed-cert.sh /
-    --service istio-sidecar-injector /
-    --namespace istio-system /
-    --secret sidecar-injector-certs
-</code></pre>
-
-<h3 id="将生成的数字证书配置到webhook中">将生成的数字证书配置到webhook中</h3>
-
-<pre><code>cat install/kubernetes/istio-sidecar-injector.yaml | /
-     ./install/kubernetes/webhook-patch-ca-bundle.sh &gt; /
-     install/kubernetes/istio-sidecar-injector-with-ca-bundle.yaml
-</code></pre>
-
-<h3 id="创建sidecar-injection-configmap">创建sidecar injection configmap</h3>
-
-<pre><code>kubectl apply -f install/kubernetes/istio-sidecar-injector-configmap-release.yaml
-</code></pre>
-
-<h3 id="部署sidecar-injection-webhook">部署sidecar injection webhook</h3>
-
-<pre><code>kubectl apply -f install/kubernetes/istio-sidecar-injector-with-ca-bundle.yaml
-</code></pre>
-
-<p>通过命令查看部署好的webhook injector</p>
-
-<p>````
-kubectl -n istio-system get deployment -listio=sidecar-injector
-Copy
-NAME                     DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-istio-sidecar-injector   1         1         1            1           1d</p>
-
-<pre><code>
-### 开启需要自动注入sidecar的namespace 
-
-</code></pre>
-
-<p>kubectl label namespace default istio-injection=enabled</p>
-
-<p>kubectl get namespace -L istio-injection</p>
-
-<p>NAME           STATUS    AGE       ISTIO-INJECTION
-default        Active    1h        enabled
-istio-system   Active    1h<br />
-kube-public    Active    1h<br />
-kube-system    Active    1h<br />
-```</p>
-
-<h2 id="参考">参考</h2>
+<p>既然Tablesaw宣称自己简单好用，那到底支持哪些功能呢，笔者新建了一个Maven工程玩了一把，貌似有以下功能：</p>
 
 <ul>
-<li><a href="https://kubernetes.io/blog/2018/01/extensible-admission-is-beta">Extensible Admission is Beta</a></li>
-<li><a href="https://istio.io/docs/setup/kubernetes/sidecar-injection.html">Installing the Istio Sidecar</a></li>
+<li>Import data from RDBMS and CSV files, local or remote (http, S3, etc.)</li>
+<li>Add and remove columns</li>
+<li>Sort</li>
+<li>Filter</li>
+<li>Group</li>
+<li>Map and reduce operations</li>
+<li>Descriptive stats (mean, min, max, median, etc.)</li>
+<li>Plotting for exploratory data analysis and model checking</li>
+<li>Store tables in a very-fast, compressed columnar storage format</li>
 </ul>
+
+<p>在试用过程中有几点事项说明下：</p>
+
+<ol>
+<li>在数据量不大的情况下，执行简单的查询操作速度很快，不像在Hive中做一个非常简单的查询都会转化成一个MapReduce作业在Hadoop集群上跑几十秒时间(当然你可以通过<code>set hive.fetch.task.conversion=more</code>，使得简单的查询不会被转化成MapReduce作业)；</li>
+<li>Tablesaw支持的功能还非常有限，对于复杂的组合查询会很吃力，甚至可能都做不到，Tablesaw作者在博客中强调未来会支持更多的列类型，支持更多的操作，同时把常用的机器学习算法的实现也引入进来，对于未来的设想我们拭目以待；</li>
+<li>在借助Tablesaw做数据展示的时候，使用的是XCharts。</li>
+</ol>
+
+<h3 id="tablesaw适用场景">Tablesaw适用场景</h3>
+
+<p>简单介绍了Tablesaw的主要功能以及未来的设想，其实我更关注的是如何与我们现有的应用场景进行结合，或者说Tablesaw在哪些场景下会比较适用，大致能想到的有以下两个领域：</p>
+
+<ol>
+<li>作为缓存器，对于热点数据我们从持久化的关系型数据库读到内存之后，可以马上对外提供计算查询的API；</li>
+<li>对于数据分析师，数据科学家等以实验论证形式展开工作的一类人，对他们来讲有一款简单易用的大数据工具绝对是福音。</li>
+</ol>
+
 
                 
                 
@@ -381,13 +327,13 @@ kube-system    Active    1h<br />
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2018/04/11/service-mesh-vs-api-gateway/" data-toggle="tooltip" data-placement="top" title="Service Mesh 和 API Gateway的关系探讨（译文）">&larr;
+                        <a href="/2019/10/20/introduction-to-hive/" data-toggle="tooltip" data-placement="top" title="大数据Hive之入门必备">&larr;
                             Previous Post</a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/2018/05/23/external_system_auth/" data-toggle="tooltip" data-placement="top" title="微服务安全沉思录之三">Next
+                        <a href="/2019/10/20/evaluation-metrics-of-spark-machine-learning/" data-toggle="tooltip" data-placement="top" title="Evaluation Metrics of Spark Machine Learning">Next
                             Post &rarr;</a>
                     </li>
                     
