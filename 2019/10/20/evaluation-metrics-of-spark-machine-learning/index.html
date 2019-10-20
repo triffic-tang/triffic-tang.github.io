@@ -214,8 +214,6 @@
                 </header>
                 <nav id="TableOfContents">
 <ul>
-<li>
-<ul>
 <li><a href="#binary-classification">Binary Classification</a></li>
 <li><a href="#precision-positive-predictive-value">Precision (Positive Predictive Value)</a></li>
 <li><a href="#recall-true-positive-rate">Recall (True Positive Rate)</a></li>
@@ -227,7 +225,6 @@
 <li><a href="#area-under-roc-curve计算">Area Under ROC Curve计算</a></li>
 </ul></li>
 <li><a href="#参考资料">参考资料</a></li>
-</ul></li>
 </ul>
 </nav>
                 
@@ -250,7 +247,7 @@
 <p>ps：在本文中我们主要讨论二元分类。</p>
 </blockquote>
 
-<h2 id="binary-classification">Binary Classification</h2>
+<h1 id="binary-classification">Binary Classification</h1>
 
 <p>二元分类旨在尽可能的把样本正确地分成两类，比如我们有一份关于病人是否患有癌症的数据集，在这样的应用场景中，借助二元分类算法模型，尽可能的把样本数据集一份为二，分别是患癌症的样本数据和不患癌症的样本数据。</p>
 
@@ -260,19 +257,19 @@
 
 <p>下面分别用文字来解释以上每个评测指标的含义，对于二元分类，我们首先约定用0代表负；1代表正[当然你也可以用-1代表负样本，1代表正样本，或者其他]。</p>
 
-<h2 id="precision-positive-predictive-value">Precision (Positive Predictive Value)</h2>
+<h1 id="precision-positive-predictive-value">Precision (Positive Predictive Value)</h1>
 
 <p>我们经常听到的查准率，即模型预测出<code>正确1</code>的个数在预测出1的个数中的比重。ps：如何来理解什么是正确的1，对于输入的每条测试样本，模型算法预测出1且在测试样本中该条输入对应的label也为1。</p>
 
-<h2 id="recall-true-positive-rate">Recall (True Positive Rate)</h2>
+<h1 id="recall-true-positive-rate">Recall (True Positive Rate)</h1>
 
 <p>我们经常听到的查全率，很好理解，即模型预测出<code>正确1</code>的个数在测试样本label为1的个数中的比重。<code>正确1</code>的理解同上。</p>
 
-<h2 id="f-measure">F-measure</h2>
+<h1 id="f-measure">F-measure</h1>
 
 <p>Precision和Recall经常会出现矛盾的地方，比如Precision很高，结果Recall很低，或者反之，这个时候我们会陷入评测困境，不知道选择哪个模型，这时我们可以引入另一个评测指标，F-measure也叫F-score，这个指标综合考虑了Precision和Recall，是这两个指标的调和平均值。</p>
 
-<h2 id="receiver-operating-characteristic-roc">Receiver Operating Characteristic (ROC)</h2>
+<h1 id="receiver-operating-characteristic-roc">Receiver Operating Characteristic (ROC)</h1>
 
 <p>根据Wikipedia定义：</p>
 
@@ -311,7 +308,7 @@
 
 <p>同样对上图中的四个点以及直线<code>x+y=1</code>进行分析可知，P-R曲线越靠近右上角，即Area Under Precision-Recall Curve越大，模型的分类效果越好。</p>
 
-<h3 id="roc曲线和p-r曲线比较">ROC曲线和P-R曲线比较</h3>
+<h2 id="roc曲线和p-r曲线比较">ROC曲线和P-R曲线比较</h2>
 
 <p>既然现在我们有这么多的基础评测指标[Precision, Recall和F-Score]，那为什么还要使用ROC和P-R曲线，尤其是我们倾向于使用ROC曲线，因为当测试样本中正负样本比例发现变化的时候，ROC曲线能够相对保持稳定，随着时间的推移，正负样本比例发现变化[正样本比负样本多很多，或者相反]更符合实际情况，摘取Fawcett, T. 在2006年发表的一篇文章[An introduction to ROC analysis. Pattern recognition letters]的一张实验比较图：
 <img src="https://github.com/triffic-tang/triffic-tang.github.io/blob/master/img/201910/201910-img6.png?raw=true" alt="" /></p>
@@ -321,7 +318,7 @@
 
 <p>下面我们以ROC曲线为例来说明曲线是如何画出的。</p>
 
-<h3 id="roc曲线如何绘制">ROC曲线如何绘制</h3>
+<h2 id="roc曲线如何绘制">ROC曲线如何绘制</h2>
 
 <p>假设我们的分类模型在数据集大小为10[当然实际情况远远大于此]的测试样本上做预测，得到了如下图所示的预测结果：
 <img src="https://github.com/triffic-tang/triffic-tang.github.io/blob/master/img/201910/201910-img7.png?raw=true" alt="" /></p>
@@ -336,7 +333,7 @@
 
 <p>这样我们就完成了ROC曲线的绘制。</p>
 
-<h3 id="area-under-roc-curve计算">Area Under ROC Curve计算</h3>
+<h2 id="area-under-roc-curve计算">Area Under ROC Curve计算</h2>
 
 <p>至于如何计算由False Positive Rate轴，True Positive Rate轴和ROC曲线形成的曲面面积则比较简单，通过以下微积分公式即可求解：
 <img src="https://github.com/triffic-tang/triffic-tang.github.io/blob/master/img/201910/201910-img10.png?raw=true" alt="" /></p>
@@ -345,7 +342,7 @@
 
 <p>ps：文中除了[ROC曲线如何绘制]这一节的三张图之外，其余图片均出自参考资料，若有侵犯，联系删除！</p>
 
-<h2 id="参考资料">参考资料</h2>
+<h1 id="参考资料">参考资料</h1>
 
 <ol>
 <li><a href="http://gim.unmc.edu/dxtests/roc3.htm">http://gim.unmc.edu/dxtests/roc3.htm</a></li>

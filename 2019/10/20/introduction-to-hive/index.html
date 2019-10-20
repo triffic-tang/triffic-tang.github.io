@@ -218,14 +218,11 @@
                 </header>
                 <nav id="TableOfContents">
 <ul>
-<li>
-<ul>
 <li><a href="#概述">概述</a></li>
 <li><a href="#hive数据存储">Hive数据存储</a></li>
 <li><a href="#hive执行过程">Hive执行过程</a></li>
 <li><a href="#hive数据类型">Hive数据类型</a></li>
 <li><a href="#hive数据模型">Hive数据模型</a></li>
-</ul></li>
 </ul>
 </nav>
                 
@@ -241,7 +238,7 @@
 
 <p>Hive本质上是一个数据仓库，但不存储数据(只存储元数据)，用户可以借助Hive使用sql对存储在分布式文件系统中的大数据集进行读写。</p>
 
-<h2 id="概述">概述</h2>
+<h1 id="概述">概述</h1>
 
 <p>知悉Hive是一个数据仓库的本质之后，我们需要简单了解下什么是数据仓库：</p>
 
@@ -261,7 +258,7 @@
 <li>Hive的数据模型</li>
 </ol>
 
-<h2 id="hive数据存储">Hive数据存储</h2>
+<h1 id="hive数据存储">Hive数据存储</h1>
 
 <p>从图1可知，在Hive的体系结构中，我们只看到了Hive对元数据信息进行管理，而并没有保存实际的数据。根据Hive的官方定义，Hive显然把真正的表数据文件存放在了Hadoop的HDFS中，而在其内建的derby或外部的Mysql数据库中保存了表的元数据信息。</p>
 
@@ -282,7 +279,7 @@ age int};
 
 <p>那么Hive内部数据存储时到底发生了什么，Hive首先会在元数据库中记录下表<code>test</code>的信息(表的名称，字段，字段类型以及在HDFS中的存储路径)；其次在HDFS相应的目录中会生成一份数据文件用来存放<code>test</code>表中具体的数据内容，数据文件一般存放在<code>/user/hive/warehouse/test/data.txt</code>(存放路径也可以在创建表的时候进行指定)。从这里可以看出Hive中的一张表对应HDFS中的一个目录，在该目录下存放表中的数据内容文件。</p>
 
-<h2 id="hive执行过程">Hive执行过程</h2>
+<h1 id="hive执行过程">Hive执行过程</h1>
 
 <p>Hive执行过程可以用下图2进行说明，我们以一条查询语句为例：
 <img src="https://github.com/triffic-tang/triffic-tang.github.io/blob/master/img/201910/201910-hive-exec.png?raw=true" alt="图2：HIVE执行过程" /></p>
@@ -298,7 +295,7 @@ age int};
 
 <p>一般来说所有的查询请求最终都会转化成一个MapReduce任务在集群上执行，但存在例外情况，比如：<code>select * from test</code>，该查询并不会转化成MapReduce任务，因为只要把该表对应HDFS目录下的所有数据文件全部取出即可。</p>
 
-<h2 id="hive数据类型">Hive数据类型</h2>
+<h1 id="hive数据类型">Hive数据类型</h1>
 
 <p>Hive既然是一个数据仓库，本质上就是一个数据库，库中有表，表里面有定义好的列，现在我们来简单介绍列的数据类型，根据Hive官网介绍，Hive数据类型大体上可以分成以下几个大类：</p>
 
@@ -331,7 +328,7 @@ credit&lt;float&gt;};
 
 <p>credit是一个保存浮点数的数组，用来描述每位学生的各科绩分。</p>
 
-<h2 id="hive数据模型">Hive数据模型</h2>
+<h1 id="hive数据模型">Hive数据模型</h1>
 
 <p>讨论完表中的字段类型，现在来看看表的分类，大致有以下几种：</p>
 
