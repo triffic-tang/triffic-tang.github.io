@@ -15,15 +15,15 @@
     
 
     
-    <meta name="title" content="大数据Hive之入门必备" />
-    <meta property="og:title" content="大数据Hive之入门必备" />
-    <meta property="twitter:title" content="大数据Hive之入门必备" />
+    <meta name="title" content="Evaluation Metrics of Spark Machine Learning" />
+    <meta property="og:title" content="Evaluation Metrics of Spark Machine Learning" />
+    <meta property="twitter:title" content="Evaluation Metrics of Spark Machine Learning" />
     
 
     
-    <meta name="description" content="Hive工具的作用，执行原理，数据类型以及数据模型">
-    <meta property="og:description" content="Hive工具的作用，执行原理，数据类型以及数据模型" />
-    <meta property="twitter:description" content="Hive工具的作用，执行原理，数据类型以及数据模型" />
+    <meta name="description" content="二元分类标准及一般意义上的度量标准">
+    <meta property="og:description" content="二元分类标准及一般意义上的度量标准" />
+    <meta property="twitter:description" content="二元分类标准及一般意义上的度量标准" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="Tangoo, Tangoo的网络日志, Tangoo的博客, Blog, 博客, 个人网站, 互联网, Web, 云原生, PaaS, Istio, Kubernetes, 微服务, Microservice">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>大数据Hive之入门必备-Tangoo的博客 | Tangoo Blog</title>
+    <title>Evaluation Metrics of Spark Machine Learning-Tangoo的博客 | Tangoo Blog</title>
 
-    <link rel="canonical" href="/2019/10/20/introduction-to-hive/">
+    <link rel="canonical" href="/2019/10/20/evaluation-metrics-of-spark-machine-learning/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 	
@@ -157,7 +157,7 @@
 
 <style type="text/css">
     header.intro-header {
-        background-image: url('https://github.com/triffic-tang/triffic-tang.github.io/blob/master/img/201910/parliament.jpg?raw=true')
+        background-image: url('https://github.com/triffic-tang/triffic-tang.github.io/blob/master/img/201910/network.jpg?raw=true')
     }
 </style>
 <header class="intro-header">
@@ -175,12 +175,8 @@
                             AI
                         </a>
                         
-                        <a class="tag" href="/tags/hve" title="HVE">
-                            HVE
-                        </a>
-                        
                     </div>
-                    <h1>大数据Hive之入门必备</h1>
+                    <h1>Evaluation Metrics of Spark Machine Learning</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
                         Posted by 
@@ -220,142 +216,144 @@
 <ul>
 <li>
 <ul>
-<li><a href="#概述">概述</a></li>
-<li><a href="#hive数据存储">Hive数据存储</a></li>
-<li><a href="#hive执行过程">Hive执行过程</a></li>
-<li><a href="#hive数据类型">Hive数据类型</a></li>
-<li><a href="#hive数据模型">Hive数据模型</a></li>
+<li><a href="#binary-classification">Binary Classification</a></li>
+<li><a href="#precision-positive-predictive-value">Precision (Positive Predictive Value)</a></li>
+<li><a href="#recall-true-positive-rate">Recall (True Positive Rate)</a></li>
+<li><a href="#f-measure">F-measure</a></li>
+<li><a href="#receiver-operating-characteristic-roc">Receiver Operating Characteristic (ROC)</a>
+<ul>
+<li><a href="#roc曲线和p-r曲线比较">ROC曲线和P-R曲线比较</a></li>
+<li><a href="#roc曲线如何绘制">ROC曲线如何绘制</a></li>
+<li><a href="#area-under-roc-curve计算">Area Under ROC Curve计算</a></li>
+</ul></li>
+<li><a href="#参考资料">参考资料</a></li>
 </ul></li>
 </ul>
 </nav>
                 
                 
 
-<p>在「聊聊大数据平台的典型应用场景」这篇文章中介绍了团队目前搭建大数据平台的实践，以及如何在实际生产环境中应用我们的大数据平台也就是寻找典型的应用场景。至于Hadoop生态系统中的Hive工具则是点到为止，并没有展开详细讨论，在这边文章中我们来入门Hive，了解Hive工具的作用，执行原理，数据类型以及数据模型。</p>
+<p>众所周知，SparkML组件提供了当前主流的机器学习算法实现，便于开发者在各个应用场景中选择合适的机器学习算法进行快速迭代验证。</p>
 
-<p>引用官网的一段说明</p>
+<p>当然在每个场景下我们都绕不过尝试多种机器学习算法，这就涉及到算法之间的横向比较，自然的我们会参考各类评测指标。</p>
+
+<p>在有监督的学习下，对于每条输入数据<x1,x2,x3,…,xn>，算法模型都能给我们一个正样本或者负样本[二元分类]的预测输出值，结合测试样本中该条输入数据对应的label[正样本/负样本]，我们一共能得到以下四种情况的组合：</p>
+
+<ul>
+<li>True Positive (TP) - label is positive and prediction is also positive</li>
+<li>True Negative (TN) - label is negative and prediction is also negative</li>
+<li>False Positive (FP) - label is negative but prediction is positive</li>
+<li>False Negative (FN) - label is positive but prediction is negative</li>
+</ul>
 
 <blockquote>
-<p>The Apache Hive ™ data warehouse software facilitates reading, writing, and managing large datasets residing in distributed storage using SQL. Structure can be projected onto data already in storage. A command line tool and JDBC driver are provided to connect users to Hive.</p>
+<p>ps：在本文中我们主要讨论二元分类。</p>
 </blockquote>
 
-<p>Hive本质上是一个数据仓库，但不存储数据(只存储元数据)，用户可以借助Hive使用sql对存储在分布式文件系统中的大数据集进行读写。</p>
+<h2 id="binary-classification">Binary Classification</h2>
 
-<h2 id="概述">概述</h2>
+<p>二元分类旨在尽可能的把样本正确地分成两类，比如我们有一份关于病人是否患有癌症的数据集，在这样的应用场景中，借助二元分类算法模型，尽可能的把样本数据集一份为二，分别是患癌症的样本数据和不患癌症的样本数据。</p>
 
-<p>知悉Hive是一个数据仓库的本质之后，我们需要简单了解下什么是数据仓库：</p>
+<p>如前所述，我们可能会选用多种分类算法，什么支持向量机/决策树/朴素贝叶斯/逻辑回归等等，那么如何来衡量这些分类算法模型哪个分类分的更好，这时我们就要借助以下指标进行衡量：
+<img src="https://github.com/triffic-tang/triffic-tang.github.io/blob/master/img/201910/201910-img1.png?raw=true" alt="" />
+<img src="https://github.com/triffic-tang/triffic-tang.github.io/blob/master/img/201910/201910-img2.png?raw=true" alt="" /></p>
+
+<p>下面分别用文字来解释以上每个评测指标的含义，对于二元分类，我们首先约定用0代表负；1代表正[当然你也可以用-1代表负样本，1代表正样本，或者其他]。</p>
+
+<h2 id="precision-positive-predictive-value">Precision (Positive Predictive Value)</h2>
+
+<p>我们经常听到的查准率，即模型预测出<code>正确1</code>的个数在预测出1的个数中的比重。ps：如何来理解什么是正确的1，对于输入的每条测试样本，模型算法预测出1且在测试样本中该条输入对应的label也为1。</p>
+
+<h2 id="recall-true-positive-rate">Recall (True Positive Rate)</h2>
+
+<p>我们经常听到的查全率，很好理解，即模型预测出<code>正确1</code>的个数在测试样本label为1的个数中的比重。<code>正确1</code>的理解同上。</p>
+
+<h2 id="f-measure">F-measure</h2>
+
+<p>Precision和Recall经常会出现矛盾的地方，比如Precision很高，结果Recall很低，或者反之，这个时候我们会陷入评测困境，不知道选择哪个模型，这时我们可以引入另一个评测指标，F-measure也叫F-score，这个指标综合考虑了Precision和Recall，是这两个指标的调和平均值。</p>
+
+<h2 id="receiver-operating-characteristic-roc">Receiver Operating Characteristic (ROC)</h2>
+
+<p>根据Wikipedia定义：</p>
 
 <blockquote>
-<p>数据仓库是面向主题的、集成的、汇总的、大容量的数据集合，主要提供企业决策分析之使用</p>
+<p>In statistics, a receiver operating characteristic curve, or ROC curve, is a graphical plot that illustrates the performance of a binary classifier system as its discrimination threshold is varied. The curve is created by plotting the true positive rate (TPR) against the false positive rate (FPR) at various threshold settings</p>
 </blockquote>
 
-<p>了解完以上这些基础信息之后，回到Hive这款开源工具本身，Hive建立在Hadoop之上，两者之间的依赖关系如下图1所示。
-<img src="https://github.com/triffic-tang/triffic-tang.github.io/blob/master/img/201910/201910-hive-arch.png?raw=true" alt="图1：HIVE与HADOOP之间的关系" /></p>
+<p>官方定义中提到ROC曲线是关于TPR[TPR=TP/(TP+FN)]和FPR[FPR=FP/(FP+TN)]随着threshold(阈值)变化而变化形成的曲线图，如下图所示(来自wiki)：
+<img src="https://github.com/triffic-tang/triffic-tang.github.io/blob/master/img/201910/201910-img3.png?raw=true" alt="" /></p>
 
-<p>结合上图1对Hive与Hadoop的直观了解，做到心中有个大致的印象，现在来讲清楚四个我认为非常关键的内容：</p>
+<p>现在来认识下上图所示的ROC曲线，首先来了解这幅图中的四个点，分别是(0,1)、(0,0)、(1,0)和(1,1)。</p>
 
-<ol>
-<li>Hive既然不保存实际数据，那数据存放在何处；</li>
-<li>用户向Hive提交查询请求时，Hive会如何处理；</li>
-<li>Hive的数据类型；</li>
-<li>Hive的数据模型</li>
-</ol>
+<ul>
+<li><strong>(0,1)</strong>表示FPR=0,TPR=1表明这个二元分类模型是一个完美的分类器，能把测试样本中的样本数据完全正确的分类；</li>
+<li><strong>(0,0)</strong>表示FPR=0,TPR=0表明该模型把所有的测试样本全划分为负样本，即TP=FP=0；</li>
+<li><strong>(1,0)</strong>表示FPR=1,TPR=0表明该模型在测试样本中进行预测的时候完全预测错了，都预测出了跟样本label完全相反的结果，即TP=TN=0，是一个非常糟糕，完全不能用的模型；</li>
+<li><strong>(1,1)</strong>表示FPR=1,TPR=1表明该模型在预测时把所有的测试样本全划分为正样本，即TN=FN=0；</li>
+</ul>
 
-<h2 id="hive数据存储">Hive数据存储</h2>
+<p>对上图中四个点进行分析可知，ROC曲线越往左上角靠近，模型分类的效果越好。
+再来看<code>y=x</code>这条直虚线，它表明的含义是在没有分类模型的情况下，我们猜测某个样本属于某个分类的概率有多大，根据经验判断，在随机猜测的前提下，我们认为某个样本属于正样本/负样本的概率分别是0.5。</p>
 
-<p>从图1可知，在Hive的体系结构中，我们只看到了Hive对元数据信息进行管理，而并没有保存实际的数据。根据Hive的官方定义，Hive显然把真正的表数据文件存放在了Hadoop的HDFS中，而在其内建的derby或外部的Mysql数据库中保存了表的元数据信息。</p>
+<p>这样我们在判断模型分类效果好坏的时候有了一个基准线，如果ROC曲线在<code>y=x</code>的右下方，则直接可以认为这个分类模型完全不可用，还不如随机猜测的分类效果好，所以ROC曲线在<code>y=x</code>的左上方才有在实际生产中应用分类模型的意义，即由True Positive Rate轴, False Positive Rate轴和曲线形成的面积越大越好，更一般地，我们对模型分类效果的好坏有以下的一般划分标准。
+<img src="https://github.com/triffic-tang/triffic-tang.github.io/blob/master/img/201910/201910-img4.png?raw=true" alt="" /></p>
 
-<p>这里说到了Hive的元数据信息，关于Hive元数据需要了解以下两点：</p>
+<ul>
+<li>0.90-1.00 = excellent (A)</li>
+<li>0.80-0.90 = good (B)</li>
+<li>0.70-0.80 = fair &copy;</li>
+<li>0.60-0.70 = poor (D)</li>
+<li>0.50-0.60 = fail (F)</li>
+</ul>
 
-<ol>
-<li>Hive将元数据(metadata)存储在数据库中，支持Derby(Hive自带，若不指定其他关系型数据库，则Hive使用默认的derby数据库)、Mysql和Oracle等数据库；</li>
-<li>Hive中的元数据包括表的名字，列字段及类型，表的类型(内部表，分区表，外部表和桶表)以及表数据文件在HDFS上的存储目录。</li>
-</ol>
+<p>如果我们考虑的是Precision和Recall随着Threshold变化而变化的情况，则我们得到如下图所示的曲线，
+<img src="https://github.com/triffic-tang/triffic-tang.github.io/blob/master/img/201910/201910-img5.png?raw=true" alt="" /></p>
 
-<p>假设现在我们在Hive中创建一张普通的内部表，执行的hql语句如下：</p>
+<p>同样对上图中的四个点以及直线<code>x+y=1</code>进行分析可知，P-R曲线越靠近右上角，即Area Under Precision-Recall Curve越大，模型的分类效果越好。</p>
 
-<pre><code>create table test
-{sid int, 
-name string, 
-age int};
-</code></pre>
+<h3 id="roc曲线和p-r曲线比较">ROC曲线和P-R曲线比较</h3>
 
-<p>那么Hive内部数据存储时到底发生了什么，Hive首先会在元数据库中记录下表<code>test</code>的信息(表的名称，字段，字段类型以及在HDFS中的存储路径)；其次在HDFS相应的目录中会生成一份数据文件用来存放<code>test</code>表中具体的数据内容，数据文件一般存放在<code>/user/hive/warehouse/test/data.txt</code>(存放路径也可以在创建表的时候进行指定)。从这里可以看出Hive中的一张表对应HDFS中的一个目录，在该目录下存放表中的数据内容文件。</p>
+<p>既然现在我们有这么多的基础评测指标[Precision, Recall和F-Score]，那为什么还要使用ROC和P-R曲线，尤其是我们倾向于使用ROC曲线，因为当测试样本中正负样本比例发现变化的时候，ROC曲线能够相对保持稳定，随着时间的推移，正负样本比例发现变化[正样本比负样本多很多，或者相反]更符合实际情况，摘取Fawcett, T. 在2006年发表的一篇文章[An introduction to ROC analysis. Pattern recognition letters]的一张实验比较图：
+<img src="https://github.com/triffic-tang/triffic-tang.github.io/blob/master/img/201910/201910-img6.png?raw=true" alt="" /></p>
 
-<h2 id="hive执行过程">Hive执行过程</h2>
+<p>(a)和&copy;表示ROC曲线，(b)和(d)表示P-R曲线，(a)和(b)表示在原始测试数据集[正负样本比较平衡]上的ROC和P-R曲线图；当把测试样本中的负样本扩大10倍之后，得到如图&copy;和(d)所示的曲线图，我们能观察到(a)和&copy;图中的ROC曲线相对保持不变，而(b)和(d)曲线变化非常大。
+所以我们得出的结论是用ROC曲线来评测模型更加稳定，不会因为正负样本比例的变化而剧烈波动，从而导致我们可能考虑选用其他的模型。</p>
 
-<p>Hive执行过程可以用下图2进行说明，我们以一条查询语句为例：
-<img src="https://github.com/triffic-tang/triffic-tang.github.io/blob/master/img/201910/201910-hive-exec.png?raw=true" alt="图2：HIVE执行过程" /></p>
+<p>下面我们以ROC曲线为例来说明曲线是如何画出的。</p>
 
-<p><code>select name,age from test where age&gt;=25</code></p>
+<h3 id="roc曲线如何绘制">ROC曲线如何绘制</h3>
 
-<ol>
-<li>HQL语句首先接受词法分析，检查是否有词法上的错误；</li>
-<li>词法检查通过之后，在编译时生成hql的执行计划，可以通过命令生成执行计划：<code>explain plan for select name,age from test where age&gt;=25;</code>，然后通过该命令查看执行计划：<code>select * from table(dbms_xplan.display);</code>;</li>
-<li>接下来Hive会对执行计划进行优化，比如我们查询的表是一张分区表，根据条件优化之后可能只会取某几个分区中的数据，而无需扫描该表对应HDFS目录下的所有数据文件；</li>
-<li>等到一切条件准备成熟之后，执行器会把执行计划发往MapReduce框架中的Job Tracker，执行批量查询。</li>
-</ol>
+<p>假设我们的分类模型在数据集大小为10[当然实际情况远远大于此]的测试样本上做预测，得到了如下图所示的预测结果：
+<img src="https://github.com/triffic-tang/triffic-tang.github.io/blob/master/img/201910/201910-img7.png?raw=true" alt="" /></p>
 
-<p>一般来说所有的查询请求最终都会转化成一个MapReduce任务在集群上执行，但存在例外情况，比如：<code>select * from test</code>，该查询并不会转化成MapReduce任务，因为只要把该表对应HDFS目录下的所有数据文件全部取出即可。</p>
+<p>上图中labeledPoint代表测试样本中的每条输入数据，label表示该条输入数据在测试样本中的值[1代表正样本，0代表负样本]，prediction代表我们的分类模型根据每条输入数据计算出的评分值，数值越大表示它属于正样本的概率越大。</p>
 
-<h2 id="hive数据类型">Hive数据类型</h2>
+<p>接下来取prediction中的每个值作为Threshold，假设我们现在选择prediction=0.341作为Threshold，那么prediction&gt;=Threshold=0.341的样本则被认为是正样本，即编号1,2,3,4和5的样本为正样本，这时我们可以计算出一组(FPR, TPR)，也即得到平面上的一个点，继续选择prediction=-0.769和-0.982作为Threshold，又得到两组新的(FPR, TPR)坐标点，如下图所示：
+<img src="https://github.com/triffic-tang/triffic-tang.github.io/blob/master/img/201910/201910-img8.png?raw=true" alt="" /></p>
 
-<p>Hive既然是一个数据仓库，本质上就是一个数据库，库中有表，表里面有定义好的列，现在我们来简单介绍列的数据类型，根据Hive官网介绍，Hive数据类型大体上可以分成以下几个大类：</p>
+<p>当我们完成所有prediction作为Threshold的遍历，就得到如下图所示的ROC曲线，在现实预测情况下，实际的测试样本数据集会多很多，得到的(FPR, TPR)点会相应的多很多，得到的ROC Curve会更平滑。
+<img src="https://github.com/triffic-tang/triffic-tang.github.io/blob/master/img/201910/201910-img9.png?raw=true" alt="" /></p>
 
-<ol>
-<li>Numeric Type</li>
-<li>Date/Time Types</li>
-<li>String Types</li>
-<li>Misc Types</li>
-<li>Complex Types</li>
-</ol>
+<p>这样我们就完成了ROC曲线的绘制。</p>
 
-<p>以上1-4种数据常用简单，就不再赘述，使用时自行参考官网，对<code>5.Complex Types</code>稍微进行解释说明，根据官网的说明<code>Complex Types</code>有以下几类：</p>
+<h3 id="area-under-roc-curve计算">Area Under ROC Curve计算</h3>
 
-<pre><code>arrays: ARRAY&lt;data_type&gt; (Note: negative values and non-constant expressions are allowed as of Hive 0.14.)
+<p>至于如何计算由False Positive Rate轴，True Positive Rate轴和ROC曲线形成的曲面面积则比较简单，通过以下微积分公式即可求解：
+<img src="https://github.com/triffic-tang/triffic-tang.github.io/blob/master/img/201910/201910-img10.png?raw=true" alt="" /></p>
 
-maps: MAP&lt;primitive_type, data_type&gt; (Note: negative values and non-constant expressions are allowed as of Hive 0.14.)
+<p>面积越大表明我们分类模型的分类效果越好。</p>
 
-structs: STRUCT&lt;col_name : data_type [COMMENT col_comment], ...&gt;
+<p>ps：文中除了[ROC曲线如何绘制]这一节的三张图之外，其余图片均出自参考资料，若有侵犯，联系删除！</p>
 
-union: UNIONTYPE&lt;data_type, data_type, ...&gt; (Note: Only available starting with Hive 0.7.0.)
-</code></pre>
-
-<p>比如我们在使用<code>ARRAY</code>(保存同一种数据类型的数据)这种复杂类型创建表的时候就可以像下面这样写：</p>
-
-<pre><code>create table student_tbl_
-{sid int, 
-name string, 
-credit&lt;float&gt;};
-</code></pre>
-
-<p>credit是一个保存浮点数的数组，用来描述每位学生的各科绩分。</p>
-
-<h2 id="hive数据模型">Hive数据模型</h2>
-
-<p>讨论完表中的字段类型，现在来看看表的分类，大致有以下几种：</p>
+<h2 id="参考资料">参考资料</h2>
 
 <ol>
-<li>内部表</li>
-<li>分区表</li>
-<li>外部表</li>
-<li>桶表</li>
-<li>视图</li>
+<li><a href="http://gim.unmc.edu/dxtests/roc3.htm">http://gim.unmc.edu/dxtests/roc3.htm</a></li>
+<li><a href="http://alexkong.net/2013/06/introduction-to-auc-and-roc/#fn:6">ROC和AUC介绍以及如何计算AUC</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Receiver_operating_characteristic">https://en.wikipedia.org/wiki/Receiver_operating_characteristic</a></li>
+<li><a href="https://spark.apache.org/docs/latest/mllib-evaluation-metrics.html">https://spark.apache.org/docs/latest/mllib-evaluation-metrics.html</a></li>
+<li><a href="http://www.sciencedirect.com/science/article/pii/S016786550500303X">http://www.sciencedirect.com/science/article/pii/S016786550500303X</a></li>
 </ol>
-
-<p>每种数据模型在官网都有详尽介绍，在这里讲解一个我们在实践过程中使用比较多的一种数据模型：<strong><em>分区表</em></strong>，以表中的某个字段进行分区，比如我们创建一张学生表如下，带上出生日期作为分区字段：</p>
-
-<pre><code>create table student_tbl_
-{sid int, 
-name string}
-partitioned by (birthdate DATE)；
-</code></pre>
-
-<p>即该表中包含了三个字段分别是学生编号，姓名和出生日期，同时把出生日期作为分区字段，则表中的数据内容对应与HDFS中的存储结构可能是这样的：
-<code>/user/hive/warehouse/student_tbl/birthdate=199501/data0.txt</code>
-<code>/user/hive/warehouse/student_tbl/birthdate=199502/data0.txt</code></p>
-
-<p>总结一下：在Hive中，表中的一个Partition对应与HDFS表名下的一个目录，属于该Partition的数据都会被存储在该目录中。</p>
 
 
                 
@@ -404,15 +402,10 @@ partitioned by (birthdate DATE)；
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2019/10/20/relationship-between-bigdata-and-ai/" data-toggle="tooltip" data-placement="top" title="大数据技术与人工智能技术之间的关系">&larr;
+                        <a href="/2019/10/20/introduction-to-hive/" data-toggle="tooltip" data-placement="top" title="大数据Hive之入门必备">&larr;
                             Previous Post</a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/2019/10/20/evaluation-metrics-of-spark-machine-learning/" data-toggle="tooltip" data-placement="top" title="Evaluation Metrics of Spark Machine Learning">Next
-                            Post &rarr;</a>
-                    </li>
                     
                 </ul>
 
