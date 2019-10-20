@@ -73,6 +73,31 @@
   </url>
   
   <url>
+    <loc>http://justtang.com/tags/hadoop/</loc>
+    <lastmod>2018-11-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://justtang.com/tags/hive/</loc>
+    <lastmod>2018-11-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://justtang.com/tags/scene/</loc>
+    <lastmod>2018-11-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://justtang.com/tags/sqoop/</loc>
+    <lastmod>2018-11-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://justtang.com/2018/11/20/typical-application-scene-of-bigdata-platform.md/</loc>
+    <lastmod>2018-11-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://justtang.com/tags/istio/</loc>
     <lastmod>2018-06-04T00:00:00+00:00</lastmod>
   </url>
