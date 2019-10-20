@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VR on Tangoo Blog</title>
+    <link>http://justtang.com/tags/vr/</link>
+    <description>Recent content in VR on Tangoo Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 20 Dec 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://justtang.com/tags/vr/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Use Case of Virtual Reality in Bank</title>
+      <link>http://justtang.com/2018/12/20/use-case-of-virtual-reality-in-bank.md/</link>
+      <pubDate>Thu, 20 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://justtang.com/2018/12/20/use-case-of-virtual-reality-in-bank.md/</guid>
+      <description>VR技术概念提出由来已久，在2015年开始逐渐进入大众视野，似乎一夜之间人们对VR的好奇心开始被激发，VR关键词频频见诸新闻和各产业经济报道</description>
+    </item>
+    
+  </channel>
+</rss>
