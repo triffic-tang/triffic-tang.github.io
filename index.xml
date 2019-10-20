@@ -6,10 +6,19 @@
     <description>Recent content on Tangoo Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 04 Jun 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 20 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://justtang.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>大数据技术与人工智能技术之间的关系</title>
+      <link>http://justtang.com/2019/10/20/relationship-between-bigdata-and-ai/</link>
+      <pubDate>Sun, 20 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://justtang.com/2019/10/20/relationship-between-bigdata-and-ai/</guid>
+      <description>重读【智能时代-技术的拐点】章节有感，以及自己的一些思考。 大家似乎都有这样一个直观的感性认识，人工智能从2015，16年开始似乎又进入了一个</description>
+    </item>
     
     <item>
       <title>Istio v1aplha3 routing API介绍(译文）</title>
