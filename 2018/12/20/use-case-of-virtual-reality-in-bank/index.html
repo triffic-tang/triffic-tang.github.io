@@ -15,15 +15,15 @@
     
 
     
-    <meta name="title" content="微服务安全沉思录之三" />
-    <meta property="og:title" content="微服务安全沉思录之三" />
-    <meta property="twitter:title" content="微服务安全沉思录之三" />
+    <meta name="title" content="Use Case of Virtual Reality in Bank" />
+    <meta property="og:title" content="Use Case of Virtual Reality in Bank" />
+    <meta property="twitter:title" content="Use Case of Virtual Reality in Bank" />
     
 
     
-    <meta name="description" content="一些外部的第三方系统可能需要访问系统内部的微服务。例如在网上商店的例子中，外部的推荐服务可能需要接入系统，以获取商店的商品目录信息。相对于内部服务之间的访问而言，外部系统的访问需要进行严格的安全控制。">
-    <meta property="og:description" content="一些外部的第三方系统可能需要访问系统内部的微服务。例如在网上商店的例子中，外部的推荐服务可能需要接入系统，以获取商店的商品目录信息。相对于内部服务之间的访问而言，外部系统的访问需要进行严格的安全控制。" />
-    <meta property="twitter:description" content="一些外部的第三方系统可能需要访问系统内部的微服务。例如在网上商店的例子中，外部的推荐服务可能需要接入系统，以获取商店的商品目录信息。相对于内部服务之间的访问而言，外部系统的访问需要进行严格的安全控制。" />
+    <meta name="description" content="Tangoo，程序员, 开源爱好者，生活探险家 | 这里是 Tangoo 的博客，与你一起发现更大的世界。">
+    <meta property="og:description" content="Tangoo，程序员, 开源爱好者，生活探险家 | 这里是 Tangoo 的博客，与你一起发现更大的世界。" />
+    <meta property="twitter:description" content="Tangoo，程序员, 开源爱好者，生活探险家 | 这里是 Tangoo 的博客，与你一起发现更大的世界。" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="Tangoo, Tangoo的网络日志, Tangoo的博客, Blog, 博客, 个人网站, 互联网, Web, 云原生, PaaS, Istio, Kubernetes, 微服务, Microservice">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>微服务安全沉思录之三-Tangoo的博客 | Tangoo Blog</title>
+    <title>Use Case of Virtual Reality in Bank-Tangoo的博客 | Tangoo Blog</title>
 
-    <link rel="canonical" href="/2018/05/23/external_system_auth/">
+    <link rel="canonical" href="/2018/12/20/use-case-of-virtual-reality-in-bank/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 	
@@ -157,7 +157,7 @@
 
 <style type="text/css">
     header.intro-header {
-        background-image: url('https://img.zhaohuabing.com/in-post/2018-05-23-external_system_auth/background.jpg')
+        background-image: url('https://github.com/triffic-tang/triffic-tang.github.io/blob/master/img/201910/quantum-physics.jpg?raw=true')
     }
 </style>
 <header class="intro-header">
@@ -167,24 +167,32 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/microservice" title="Microservice">
-                            Microservice
+                        <a class="tag" href="/tags/vr" title="VR">
+                            VR
                         </a>
                         
-                        <a class="tag" href="/tags/security" title="Security">
-                            Security
+                        <a class="tag" href="/tags/scene" title="SCENE">
+                            SCENE
+                        </a>
+                        
+                        <a class="tag" href="/tags/mobile" title="MOBILE">
+                            MOBILE
+                        </a>
+                        
+                        <a class="tag" href="/tags/bank" title="BANK">
+                            BANK
                         </a>
                         
                     </div>
-                    <h1>微服务安全沉思录之三</h1>
-                    <h2 class="subheading">外部系统访问控制</h2>
+                    <h1>Use Case of Virtual Reality in Bank</h1>
+                    <h2 class="subheading">VR技术在手机银行中的运用畅想</h2>
                     <span class="meta">
                         Posted by 
                         
-                                &#34;赵化冰&#34;
+                                &#34;Tango&#34;
                          
                         on 
-                        Wednesday, May 23, 2018
+                        Thursday, December 20, 2018
                         
                         
                         
@@ -214,99 +222,97 @@
                 </header>
                 <nav id="TableOfContents">
 <ul>
-<li>
+<li><a href="#概述">概述</a></li>
+<li><a href="#vr技术初体验">VR技术初体验</a>
 <ul>
-<li><a href="#外部系统访问控制">外部系统访问控制</a>
-<ul>
-<li><a href="#使用账号进行控制">使用账号进行控制</a></li>
-<li><a href="#api-token">API Token</a></li>
-<li><a href="#oauth">OAuth</a></li>
+<li><a href="#场景1">场景1</a></li>
+<li><a href="#关键技术">关键技术</a></li>
+<li><a href="#场景2">场景2</a></li>
+<li><a href="#关键技术-1">关键技术</a></li>
+<li><a href="#场景3">场景3</a></li>
+<li><a href="#关键技术-2">关键技术</a></li>
 </ul></li>
-<li><a href="#后记">后记</a></li>
-</ul></li>
+<li><a href="#结语">结语</a></li>
 </ul>
 </nav>
                 
                 
 
-<h2 id="外部系统访问控制">外部系统访问控制</h2>
+<h1 id="概述">概述</h1>
 
-<p>除用户访问和微服务之间的相互访问外，外部的第三方系统也可能需要访问系统内部的微服务。例如在上一篇博客的网上商店例子中，外部的推荐服务可能需要接入系统，以获取商店的商品目录信息。相对于内部服务之间的访问而言，外部系统的访问需要进行严格的安全控制。</p>
+<p>VR技术概念提出由来已久，在2015年开始逐渐进入大众视野，似乎一夜之间人们对VR的好奇心开始被激发，VR关键词频频见诸新闻和各产业经济报道的热搜中，我们得以慢慢开始了解这项技术，并在碎片化的信息中去拼凑和预测VR在未来各领域所可能带来的改革。理论派，工业界和科技巨头都开始纷纷涉足和布局VR战略，希望在下一代重大计算平台（VR/AR）上领跑。</p>
 
-<h3 id="使用账号进行控制">使用账号进行控制</h3>
+<p>本文限于篇幅，对VR/AR技术概念，发展现状，生态布局，核心发展趋势以及面临的挑战不作介绍，这部分内容请参考（2016年德意志银行VR/AR报告中文完整版），报告详尽地阐述了前文中提及的这几部分内容。而本文旨在进行VR/AR技术如何与我行的手机银行亦或是网点进行有效结合的探索研究上。</p>
 
-<p>可以为外部系统创建一个用户账号，类似普通用户一样对外部系统的账号进行管理，并使用该账号对外部系统进行认证和权限控制。</p>
+<p>手机银行业务种类繁多，基本涵盖用户需求的方方面面，而在探索VR/AR进程上，我们试图去抽象几个核心功能，验证其可行性，并去想象利用VR/AR技术将会给用户体验带来怎样的变革，所以我们抽象了如下图所示的概览图：
+<img src="https://github.com/triffic-tang/triffic-tang.github.io/blob/master/img/201910/201910-img12.png?raw=true" alt="" />
+由上图可知，我们把手机银行中涵盖的功能大致分成三类：无实际交易 常规服务以及私人顾问服务。现在我们开始想象我行在手机银行中引入VR/AR技术之后，用户进入手机银行时所能得到的感受：VR/AR能让我们完全获得{在场}的体验，在体验中我们通过手势和口令改变环境，用户如同真的进入一个营业网点，可以在其中随意漫游，看宣传折页；向大堂经理咨询信息，办理查询、缴费和转账等业务；同时进一步可以和私人顾问详细了解为你量身打造的复杂投资理财组合，甚至讨论将来的退休资金安排。</p>
 
-<p>采用这种方式的问题是难以处理用户相关的敏感数据。因为外部系统自身也是微服务系统中的一个用户账号，因此该外部系统只能访问该账号自身的数据和一些不敏感的公共数据，而不能访问和用户相关的数据。例如在网上商店的例子中，外部系统可以采用该方式访问商品目录信息，但不应允许访问用户历史购买记录，用户余额等信息。</p>
+<p>根据上图所示以及前文谈论到的美好愿景，接下来我们结合VR/AR技术的最新研究成果，看看我们已经走到了哪一步。</p>
 
-<h3 id="api-token">API Token</h3>
+<h1 id="vr技术初体验">VR技术初体验</h1>
 
-<p>是一个API Token（又称API Key）可以控制对用户敏感数据的访问。微服务应用提供一个API Token的生成界面，用户登录后可以生成自己的API Token，并在第三方应用使用该API Token访问微服务的API。在这种情况下，一般只允许第三方应用访问该Token所属用户自身的数据，而不能访问其他用户的敏感私有数据。</p>
+<p>现在我们来模拟展示用户登录手机银行后的情景：用户Tom打开我行手机银行App，App结合<code>虹膜识别技术</code>验证Tom身份信息，如下图所示：
+<img src="https://github.com/triffic-tang/triffic-tang.github.io/blob/master/img/201910/201910-img13.png?raw=true" alt="" />
+验证通过之后，Tom进入虚拟网点。</p>
 
-<p>例如Github就提供了Personal API Token功能，用户可以在<a href="https://github.com/settings/tokens">Github的开发者设置界面</a>中创建Token，然后使用该Token来访问Github的API。在创建Token时，可以设置该Token可以访问用户的哪些数据，如查看Repo信息，删除Repo，查看用户信息，更新用户信息等。</p>
+<h2 id="场景1">场景1</h2>
 
-<p>使用API Token来访问Github API</p>
+<p>Tom随意漫游，发现宣传架上摆放着最新的关于<code>营改增</code>的宣传手册，他一直很好奇国家实行营改增政策之后，会对自己的建筑公司在财务方面造成什么影响，所以想仔细阅读一下，Tom做了一个抓取的手势，系统识别到这一行为之后马上把这份宣传手册移送到Tom面前并展开，模拟场景如下图所示：
+<img src="https://github.com/triffic-tang/triffic-tang.github.io/blob/master/img/201910/201910-img14.jpg?raw=true" alt="" />
+，在阅读过程中对营改增的增值税计算规则进行了重点了解，并发出计算规则具体计算示例举例说明的语音指令，屏幕上立即出现结合税率档次和应纳税额的示例说明，如此Tom得以全面的了解了营改增这一政策，模拟场景如下图所示：
+<img src="https://github.com/triffic-tang/triffic-tang.github.io/blob/master/img/201910/201910-img15.jpg?raw=true" alt="" /></p>
 
-<pre><code>curl -u zhaohuabing:fbdf8e8862252ed0f3ba9dba4e328c01ac93aeec https://api.github.com/user
+<h2 id="关键技术">关键技术</h2>
 
-</code></pre>
+<ul>
+<li>虚拟场景；</li>
+<li>虹膜识别；</li>
+<li>手势识别；</li>
+<li>语音识别；</li>
+</ul>
 
-<blockquote>
-<p>不用试了,这不是我的真实API Token, just for demonstration :-)</p>
-</blockquote>
+<h2 id="场景2">场景2</h2>
 
-<p>使用API Token而不是直接使用用户名/密码来访问API的好处是降低了用户密码暴露的风险，并且可以随时收回Token的权限而不用修改密码。</p>
+<p>在详细了解营改增政策之后，Tom想起还需要办理一项转账业务，约定付给上游供应商的一笔货款就这两天要到期了，Tom在菜单上结合手势选择转账功能，屏幕上列出了和自己建筑公司常有业务往来的上游供应商列表，如下图所示：
+<img src="https://github.com/triffic-tang/triffic-tang.github.io/blob/master/img/201910/201910-img16.png?raw=true" alt="" />
+在定位到具体的某个上游供应商之后，Tom做了抓取手势，该供应商单独在左边显示，更详尽的展示该供应商的信用情况，业务往来次数以及收款账户信息等，Tom确认无误后，发出转账的语音指令，进度条实时展示货款打入对方账户的处理进度，转账成功之后，收到供应商的确认信息，模拟场景如下图所示：
+<img src="https://github.com/triffic-tang/triffic-tang.github.io/blob/master/img/201910/201910-img17.png?raw=true" alt="" /></p>
 
-<p>由于API Token只能访问指定用户的数据，因此适合于用户自己开发一些脚本或小程序对应用中自己的数据进行操作。</p>
+<h2 id="关键技术-1">关键技术</h2>
 
-<h3 id="oauth">OAuth</h3>
+<ul>
+<li>手势识别；</li>
+<li>虚拟化呈现；</li>
+<li>人工智能；</li>
+</ul>
 
-<p>某些第三方应用需要访问不同用户的数据，或者对多个用户的数据进行整合处理，则可以考虑采用OAuth。采用OAuth，当第三方应用访问服务时，应用会提示用户授权第三方应用相应的访问权限，根据用户的授权操作结果生成用于访问的Token，以对第三方应用的操作请求进行访问控制。</p>
+<h2 id="场景3">场景3</h2>
 
-<p>同样以Github为例，一些第三方应用如Travis CI，GitBook等就是通过OAuth和Github进行集成的。
-OAuth针对不同场景有不同的认证流程，一个典型的认证流程如下图所示：
-* 用户向OAuth客户端程序发起一个请求，OAuth客户端程序在处理该请求时发现需要访问用户在资源服务器中的数据。
-* 客户端程序将用户请求重定向到认证服务器，该请求中包含一个callback的URL。
-* 认证服务器返回授权页面，要求用户对OAuth客户端的资源请求进行授权。
-* 用户对该操作进行授权后，认证服务器将请求重定向到客户端程序的callback url，将授权码返回给客户端程序。
-* 客户端程序将授权码发送给认证服务器，请求token。
-* 认证服务器验证授权码后将token颁发给客户端程序。
-* 客户端程序采用颁发的token访问资源，完成用户请求。</p>
+<p>Tom在办完转账之后，发现自己账户余额还可观，加上最近刚刚收到甲方公司打过来的一笔工程款，在扣除必要的支出之后，计划把余额用来购买理财产品，于是呼叫自己的私人理财顾问Mary，想听听她的专业建议，Mary在收到呼叫后，快速进入虚拟环境进行远程支持，Tom和Mary开始进行面对面地交流，
+如下图所示：
+<img src="https://github.com/triffic-tang/triffic-tang.github.io/blob/master/img/201910/201910-img18.png?raw=true" alt="" />
+Mary熟悉Tom过去所执行的理财规划和已有的投资理财项目，Mary以图表的形式展示过去Tom先生的理财计划执行情况，以Tom想要达到的理财目标为出发点，向Tom建议这笔钱应该用来购买什么投资理财产品，Tom从前被繁琐的数据所苦恼，无法理解在新闻中或银行产品中出现的金融图表，现在通过多维可视化以及手势口令的作用，VR技术为他和数据的互动提供了一种更加直观的方式，Tom与Mary之间的对话情景模拟如下图所示：
+<img src="https://github.com/triffic-tang/triffic-tang.github.io/blob/master/img/201910/201910-img19.png?raw=true" alt="" /></p>
 
-<blockquote>
-<p>备注：
-1. OAuth中按照功能区分了资源服务器和认证服务器这两个角色，在实现时这两个角色常常是同一个应用。将该流程图中的各个角色对应到Github的例子中，资源服务器和认证服务器都是Github，客户端程序是Travis CI或者GitBook，用户则是使用Travis CI或者GitBook的直接用户。</p>
+<h2 id="关键技术-2">关键技术</h2>
 
-<ol>
-<li><p>有人可能会疑惑在该流程中为何要使用一个授权码(Authorization Code)来申请Token，而不是由认证服务器直接返回Token给客户端。OAuth这样设计的原因是在重定向到客户端Callback URL的过程中会经过用户代理（浏览器），如果直接传递Token存在被窃取的风险。采用授权码的方式，申请Token时客户端直接和认证服务器进行交互，并且认证服务期在处理客户端的Token申请请求时还会对客户端进行身份认证，避免其他人伪造客户端身份来使用认证码申请Token。
-下面是一个客户端程序采用Authorization Code来申请Token的示例，client_id和client_secret被用来验证客户端的身份。</p>
+<ul>
+<li>虚拟场景；</li>
+<li>人工智能；</li>
+<li>语音识别；</li>
+<li>视频通讯；</li>
+</ul>
 
-<pre><code>POST /oauth/token HTTP/1.1
-Host: authorization-server.com
-          
-grant_type=authorization_code
-&amp;code=xxxxxxxxxxx
-&amp;redirect_uri=https://example-app.com/redirect
-&amp;client_id=xxxxxxxxxx
-&amp;client_secret=xxxxxxxxxx
-</code></pre></li>
-</ol>
-</blockquote>
+<h1 id="结语">结语</h1>
 
-<p><img src="https://img.zhaohuabing.com/in-post/2018-05-23-external_system_auth/oauth_web_server_flow.png" alt="OAuth认证流程" />
-<center>OAuth认证流程</center></p>
+<p>在前文中，我们从技术远景出发简略的畅想了未来在手机银行上可能会出现的场景，对这一初步探索我们进行了总结，我们认为在手机银行(金融服务领域)中VR/AR可以发挥以下作用：</p>
 
-<p>另外在谈及OAuth时，我们需要注意微服务应用作为OAuth客户端和OAuth服务器的两种不同场景:</p>
-
-<p>在实现微服务自身的用户认证时，也可以采用OAuth将微服务的用户认证委托给一个第三方的认证服务提供商，例如很多应用都将用户登录和微信或者QQ的OAuth服务进行了集成。</p>
-
-<p>第三方应用接入和微服务自身用户认证采用OAuth的目的是不同的，前者是为了将微服务中用户的私有数据访问权限授权给第三方应用，微服务在OAuth架构中是认证和资源服务器的角色；而后者的目的是集成并利用知名认证提供服务商提供的OAuth认证服务，简化繁琐的注册操作，微服务在OAuth架构中是客户端的角色。</p>
-
-<p>因此在我们需要区分这两种不同的场景，以免造成误解。</p>
-
-<h2 id="后记">后记</h2>
-
-<p>前两篇文章在在公众号发布后，有朋友提到还要注意登录密码明文问题、防止重放攻击、防止时间差攻击、防止脱裤后的彩虹表攻击&hellip;。的确，安全是一个庞大的话题，本系列文章只阐述了我关于微服务架构对应用安全带来的影响的一点小小思考。在产品开发和运维中，还需要对安全进行全方面的考虑，最好遵循一些业界的最佳实践，如采用完善的防火墙对外部流量进行隔离，采用加盐hash对用户密码进行存储，采用tls进行加密传输，对用户输入进行严格检查防止sql注入，采用经过验证的通用加密算法等等。</p>
+<ul>
+<li>创造了全新的手机银行交互体验；传统手机银行受限于有限的显示屏幕，用户在操作过程中感到局促和不适，引入VR技术之后，物理显示屏幕大小的限制由此被打破，用户可以与虚拟化呈现在眼前的巨大曲面显示屏进行交互操作（通过手势，口令等方式）；</li>
+<li>节约了银行物理网点的运营成本；由VR技术打造的手机银行使得用户可以足不出户的完成银行业务，物理网点会逐步趋于消亡，相应的运营成本也会随之下降；</li>
+<li>提升了工行手机银行的品牌价值；融合最新VR技术的手机银行代表着未来的发展趋势，会越来越得到用户的追捧和喜爱，品牌深入人心。</li>
+</ul>
 
 
                 
@@ -355,13 +361,13 @@ grant_type=authorization_code
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2018/05/23/istio-auto-injection-with-webhook/" data-toggle="tooltip" data-placement="top" title="Istio Sidecar自动注入原理">&larr;
+                        <a href="/2018/11/20/typical-application-scene-of-bigdata-platform/" data-toggle="tooltip" data-placement="top" title="Typical Application Scene of BigData Platform">&larr;
                             Previous Post</a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/2018/06/04/introducing-the-istio-v1alpha3-routing-api/" data-toggle="tooltip" data-placement="top" title="Istio v1aplha3 routing API介绍(译文）">Next
+                        <a href="/2019/10/20/relationship-between-bigdata-and-ai/" data-toggle="tooltip" data-placement="top" title="大数据技术与人工智能技术之间的关系">Next
                             Post &rarr;</a>
                     </li>
                     

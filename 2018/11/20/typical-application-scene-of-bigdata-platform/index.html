@@ -15,15 +15,15 @@
     
 
     
-    <meta name="title" content="微服务安全沉思录之三" />
-    <meta property="og:title" content="微服务安全沉思录之三" />
-    <meta property="twitter:title" content="微服务安全沉思录之三" />
+    <meta name="title" content="Typical Application Scene of BigData Platform" />
+    <meta property="og:title" content="Typical Application Scene of BigData Platform" />
+    <meta property="twitter:title" content="Typical Application Scene of BigData Platform" />
     
 
     
-    <meta name="description" content="一些外部的第三方系统可能需要访问系统内部的微服务。例如在网上商店的例子中，外部的推荐服务可能需要接入系统，以获取商店的商品目录信息。相对于内部服务之间的访问而言，外部系统的访问需要进行严格的安全控制。">
-    <meta property="og:description" content="一些外部的第三方系统可能需要访问系统内部的微服务。例如在网上商店的例子中，外部的推荐服务可能需要接入系统，以获取商店的商品目录信息。相对于内部服务之间的访问而言，外部系统的访问需要进行严格的安全控制。" />
-    <meta property="twitter:description" content="一些外部的第三方系统可能需要访问系统内部的微服务。例如在网上商店的例子中，外部的推荐服务可能需要接入系统，以获取商店的商品目录信息。相对于内部服务之间的访问而言，外部系统的访问需要进行严格的安全控制。" />
+    <meta name="description" content="Tangoo，程序员, 开源爱好者，生活探险家 | 这里是 Tangoo 的博客，与你一起发现更大的世界。">
+    <meta property="og:description" content="Tangoo，程序员, 开源爱好者，生活探险家 | 这里是 Tangoo 的博客，与你一起发现更大的世界。" />
+    <meta property="twitter:description" content="Tangoo，程序员, 开源爱好者，生活探险家 | 这里是 Tangoo 的博客，与你一起发现更大的世界。" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="Tangoo, Tangoo的网络日志, Tangoo的博客, Blog, 博客, 个人网站, 互联网, Web, 云原生, PaaS, Istio, Kubernetes, 微服务, Microservice">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>微服务安全沉思录之三-Tangoo的博客 | Tangoo Blog</title>
+    <title>Typical Application Scene of BigData Platform-Tangoo的博客 | Tangoo Blog</title>
 
-    <link rel="canonical" href="/2018/05/23/external_system_auth/">
+    <link rel="canonical" href="/2018/11/20/typical-application-scene-of-bigdata-platform/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 	
@@ -157,7 +157,7 @@
 
 <style type="text/css">
     header.intro-header {
-        background-image: url('https://img.zhaohuabing.com/in-post/2018-05-23-external_system_auth/background.jpg')
+        background-image: url('https://github.com/triffic-tang/triffic-tang.github.io/blob/master/img/201910/sea.jpg?raw=true')
     }
 </style>
 <header class="intro-header">
@@ -167,24 +167,36 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/microservice" title="Microservice">
-                            Microservice
+                        <a class="tag" href="/tags/bigdata" title="BIGDATA">
+                            BIGDATA
                         </a>
                         
-                        <a class="tag" href="/tags/security" title="Security">
-                            Security
+                        <a class="tag" href="/tags/scene" title="SCENE">
+                            SCENE
+                        </a>
+                        
+                        <a class="tag" href="/tags/hive" title="HIVE">
+                            HIVE
+                        </a>
+                        
+                        <a class="tag" href="/tags/sqoop" title="SQOOP">
+                            SQOOP
+                        </a>
+                        
+                        <a class="tag" href="/tags/hadoop" title="HADOOP">
+                            HADOOP
                         </a>
                         
                     </div>
-                    <h1>微服务安全沉思录之三</h1>
-                    <h2 class="subheading">外部系统访问控制</h2>
+                    <h1>Typical Application Scene of BigData Platform</h1>
+                    <h2 class="subheading">聊聊大数据平台的典型应用场景</h2>
                     <span class="meta">
                         Posted by 
                         
-                                &#34;赵化冰&#34;
+                                &#34;Tango&#34;
                          
                         on 
-                        Wednesday, May 23, 2018
+                        Tuesday, November 20, 2018
                         
                         
                         
@@ -214,99 +226,69 @@
                 </header>
                 <nav id="TableOfContents">
 <ul>
-<li>
-<ul>
-<li><a href="#外部系统访问控制">外部系统访问控制</a>
-<ul>
-<li><a href="#使用账号进行控制">使用账号进行控制</a></li>
-<li><a href="#api-token">API Token</a></li>
-<li><a href="#oauth">OAuth</a></li>
-</ul></li>
-<li><a href="#后记">后记</a></li>
-</ul></li>
+<li><a href="#概述">概述</a></li>
+<li><a href="#hadoop">Hadoop</a></li>
+<li><a href="#hive">Hive</a></li>
+<li><a href="#sqoop">Sqoop</a></li>
+<li><a href="#典型应用场景">典型应用场景</a></li>
+<li><a href="#后期规划">后期规划</a></li>
 </ul>
 </nav>
                 
                 
 
-<h2 id="外部系统访问控制">外部系统访问控制</h2>
+<h1 id="概述">概述</h1>
 
-<p>除用户访问和微服务之间的相互访问外，外部的第三方系统也可能需要访问系统内部的微服务。例如在上一篇博客的网上商店例子中，外部的推荐服务可能需要接入系统，以获取商店的商品目录信息。相对于内部服务之间的访问而言，外部系统的访问需要进行严格的安全控制。</p>
+<p>说起大数据总是感觉听得多，实践的少，所以谈不上有什么认识，很是遗憾。然前一段时间刚好接手团队内部「数据服务线」的工作，筹划搭建大数据平台，埋藏在心底的那股劲儿又被唤起，提枪上马开干。</p>
 
-<h3 id="使用账号进行控制">使用账号进行控制</h3>
+<p>整个大数据集群大概有十几台虚拟机，安装Hadoop生态系统的开源工具，具体工具如下：</p>
 
-<p>可以为外部系统创建一个用户账号，类似普通用户一样对外部系统的账号进行管理，并使用该账号对外部系统进行认证和权限控制。</p>
+<h1 id="hadoop">Hadoop</h1>
 
-<p>采用这种方式的问题是难以处理用户相关的敏感数据。因为外部系统自身也是微服务系统中的一个用户账号，因此该外部系统只能访问该账号自身的数据和一些不敏感的公共数据，而不能访问和用户相关的数据。例如在网上商店的例子中，外部系统可以采用该方式访问商品目录信息，但不应允许访问用户历史购买记录，用户余额等信息。</p>
-
-<h3 id="api-token">API Token</h3>
-
-<p>是一个API Token（又称API Key）可以控制对用户敏感数据的访问。微服务应用提供一个API Token的生成界面，用户登录后可以生成自己的API Token，并在第三方应用使用该API Token访问微服务的API。在这种情况下，一般只允许第三方应用访问该Token所属用户自身的数据，而不能访问其他用户的敏感私有数据。</p>
-
-<p>例如Github就提供了Personal API Token功能，用户可以在<a href="https://github.com/settings/tokens">Github的开发者设置界面</a>中创建Token，然后使用该Token来访问Github的API。在创建Token时，可以设置该Token可以访问用户的哪些数据，如查看Repo信息，删除Repo，查看用户信息，更新用户信息等。</p>
-
-<p>使用API Token来访问Github API</p>
-
-<pre><code>curl -u zhaohuabing:fbdf8e8862252ed0f3ba9dba4e328c01ac93aeec https://api.github.com/user
-
-</code></pre>
-
-<blockquote>
-<p>不用试了,这不是我的真实API Token, just for demonstration :-)</p>
-</blockquote>
-
-<p>使用API Token而不是直接使用用户名/密码来访问API的好处是降低了用户密码暴露的风险，并且可以随时收回Token的权限而不用修改密码。</p>
-
-<p>由于API Token只能访问指定用户的数据，因此适合于用户自己开发一些脚本或小程序对应用中自己的数据进行操作。</p>
-
-<h3 id="oauth">OAuth</h3>
-
-<p>某些第三方应用需要访问不同用户的数据，或者对多个用户的数据进行整合处理，则可以考虑采用OAuth。采用OAuth，当第三方应用访问服务时，应用会提示用户授权第三方应用相应的访问权限，根据用户的授权操作结果生成用于访问的Token，以对第三方应用的操作请求进行访问控制。</p>
-
-<p>同样以Github为例，一些第三方应用如Travis CI，GitBook等就是通过OAuth和Github进行集成的。
-OAuth针对不同场景有不同的认证流程，一个典型的认证流程如下图所示：
-* 用户向OAuth客户端程序发起一个请求，OAuth客户端程序在处理该请求时发现需要访问用户在资源服务器中的数据。
-* 客户端程序将用户请求重定向到认证服务器，该请求中包含一个callback的URL。
-* 认证服务器返回授权页面，要求用户对OAuth客户端的资源请求进行授权。
-* 用户对该操作进行授权后，认证服务器将请求重定向到客户端程序的callback url，将授权码返回给客户端程序。
-* 客户端程序将授权码发送给认证服务器，请求token。
-* 认证服务器验证授权码后将token颁发给客户端程序。
-* 客户端程序采用颁发的token访问资源，完成用户请求。</p>
-
-<blockquote>
-<p>备注：
-1. OAuth中按照功能区分了资源服务器和认证服务器这两个角色，在实现时这两个角色常常是同一个应用。将该流程图中的各个角色对应到Github的例子中，资源服务器和认证服务器都是Github，客户端程序是Travis CI或者GitBook，用户则是使用Travis CI或者GitBook的直接用户。</p>
+<p>Hadoop作为整个大数据生态系统的基础组件是不可或缺的，该工具主要涵盖以下功能模块：</p>
 
 <ol>
-<li><p>有人可能会疑惑在该流程中为何要使用一个授权码(Authorization Code)来申请Token，而不是由认证服务器直接返回Token给客户端。OAuth这样设计的原因是在重定向到客户端Callback URL的过程中会经过用户代理（浏览器），如果直接传递Token存在被窃取的风险。采用授权码的方式，申请Token时客户端直接和认证服务器进行交互，并且认证服务期在处理客户端的Token申请请求时还会对客户端进行身份认证，避免其他人伪造客户端身份来使用认证码申请Token。
-下面是一个客户端程序采用Authorization Code来申请Token的示例，client_id和client_secret被用来验证客户端的身份。</p>
-
-<pre><code>POST /oauth/token HTTP/1.1
-Host: authorization-server.com
-          
-grant_type=authorization_code
-&amp;code=xxxxxxxxxxx
-&amp;redirect_uri=https://example-app.com/redirect
-&amp;client_id=xxxxxxxxxx
-&amp;client_secret=xxxxxxxxxx
-</code></pre></li>
+<li>Hadoop Common：基础通用工具函数；</li>
+<li>Hadoop Contributed File System(HDFS)：一款分布式文件系统，支持应用对数据高并发访问；</li>
+<li>Hadoop YARN：开源工具都跑在同一个集群上，如何保证他们之间的有序调度就是YARN所要负责的工作；</li>
+<li>Hadoop MapReduce：通用的大数据并行运行计算框架。</li>
 </ol>
-</blockquote>
 
-<p><img src="https://img.zhaohuabing.com/in-post/2018-05-23-external_system_auth/oauth_web_server_flow.png" alt="OAuth认证流程" />
-<center>OAuth认证流程</center></p>
+<h1 id="hive">Hive</h1>
 
-<p>另外在谈及OAuth时，我们需要注意微服务应用作为OAuth客户端和OAuth服务器的两种不同场景:</p>
+<p>Hive是一款Hadoop生态系统中的数据仓库软件，使用SQL在分布式存储系统中进行读写，提供CLI、JDBC/ODBC以及WEB GUI三种交互方式。</p>
 
-<p>在实现微服务自身的用户认证时，也可以采用OAuth将微服务的用户认证委托给一个第三方的认证服务提供商，例如很多应用都将用户登录和微信或者QQ的OAuth服务进行了集成。</p>
+<h1 id="sqoop">Sqoop</h1>
 
-<p>第三方应用接入和微服务自身用户认证采用OAuth的目的是不同的，前者是为了将微服务中用户的私有数据访问权限授权给第三方应用，微服务在OAuth架构中是认证和资源服务器的角色；而后者的目的是集成并利用知名认证提供服务商提供的OAuth认证服务，简化繁琐的注册操作，微服务在OAuth架构中是客户端的角色。</p>
+<p>Sqoop用于在Hadoop(Hive)与关系型数据库(Oracle/Mysql)之间进行数据的导入导出，根据实战经验，在数据加工这一应用场景中，事先需要把关系型数据库表中的数据导入Hive中，此工具不可或缺。</p>
 
-<p>因此在我们需要区分这两种不同的场景，以免造成误解。</p>
+<p>在完成搭建之后，整个大数据平台的架构如下图所示：
+<img src="https://github.com/triffic-tang/triffic-tang.github.io/blob/master/img/201910/201910-img11.png?raw=true" alt="数据平台架构" /></p>
 
-<h2 id="后记">后记</h2>
+<p>前文中已经对架构图中的每款开源工具都做了介绍。</p>
 
-<p>前两篇文章在在公众号发布后，有朋友提到还要注意登录密码明文问题、防止重放攻击、防止时间差攻击、防止脱裤后的彩虹表攻击&hellip;。的确，安全是一个庞大的话题，本系列文章只阐述了我关于微服务架构对应用安全带来的影响的一点小小思考。在产品开发和运维中，还需要对安全进行全方面的考虑，最好遵循一些业界的最佳实践，如采用完善的防火墙对外部流量进行隔离，采用加盐hash对用户密码进行存储，采用tls进行加密传输，对用户输入进行严格检查防止sql注入，采用经过验证的通用加密算法等等。</p>
+<h1 id="典型应用场景">典型应用场景</h1>
+
+<p>完成大数据平台的搭建不是目的，关键是如何在团队业务中寻找应用场景，从而赋能业务，在诸多的应用场景探索过程中，比如银行系统日终对账、统计各B2B商城用户T-1日的下单量，pv量等统计指标，最终我们把这些具体的应用场景抽象为一个「应用数据ETL」服务，该服务包含以下几个步骤：</p>
+
+<ol>
+<li>利用Sqoop工具把Mysql指定库中的表数据导入到Hive中；</li>
+<li>预处理(可选项)，可以执行在Mysql库中预先定义好的存储过程；</li>
+<li>执行ETL，根据数据加工的目的编写相应的hql语句；</li>
+<li>利用Sqoop工具把Hive中存储处理结果的临时表中的数据导出到Mysql指定库表中，支持应用实时查询；</li>
+<li>清理工作，比如删除Hive中创建的临时处理结果表。</li>
+</ol>
+
+<p>以上五个步骤分别对应<strong>架构图</strong>中右上角的内容，并在图中已经表明执行每个步骤时所需要连接的内容，考虑到架构图的简洁和美观，步骤中的第3步和第5步并没有直接连线到Hive，而是把他们两个单独拎出，一起放在左上角。</p>
+
+<h1 id="后期规划">后期规划</h1>
+
+<p>在现有的大数据平台架构中引入Spark，Spark是一款基于内存的并行运行框架，从实验中得到论证：Spark比Hadoop中的MapReduce运行框架快100倍，在平台框架中选中它基于两方面的考虑：</p>
+
+<ol>
+<li>替换MapReduce；</li>
+<li>Spark可以在多个领域进行扩展，Spark发展到现在已经有了一套非常具有技术洞见的工具，在SQL查询，机器学习和流计算等方面有很强的优势，为我们之后的应用场景探索做技术储备。</li>
+</ol>
 
 
                 
@@ -355,13 +337,13 @@ grant_type=authorization_code
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2018/05/23/istio-auto-injection-with-webhook/" data-toggle="tooltip" data-placement="top" title="Istio Sidecar自动注入原理">&larr;
+                        <a href="/2018/06/04/introducing-the-istio-v1alpha3-routing-api/" data-toggle="tooltip" data-placement="top" title="Istio v1aplha3 routing API介绍(译文）">&larr;
                             Previous Post</a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/2018/06/04/introducing-the-istio-v1alpha3-routing-api/" data-toggle="tooltip" data-placement="top" title="Istio v1aplha3 routing API介绍(译文）">Next
+                        <a href="/2018/12/20/use-case-of-virtual-reality-in-bank/" data-toggle="tooltip" data-placement="top" title="Use Case of Virtual Reality in Bank">Next
                             Post &rarr;</a>
                     </li>
                     
