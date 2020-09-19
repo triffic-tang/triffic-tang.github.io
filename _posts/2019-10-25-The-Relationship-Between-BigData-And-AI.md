@@ -2,7 +2,7 @@
 layout:            post
 title:             "大数据技术与人工智能技术之间的关系"
 date:              2019-10-25 18:25:00 +0300
-menutitle:         "Content styles"
+menutitle:         "大数据技术与人工智能技术之间的关系"
 category:          Features
 author:            Tangoo
 tags:              AI BIGDATA
@@ -14,12 +14,10 @@ tags:              AI BIGDATA
 > 人工智能就像潜力无限的婴儿，而大数据是喂养婴儿的奶粉，奶粉的数量和质量决定了婴儿的智力发育水平。
 
 那么这十几年以来，大数据技术取得了哪些突破性的进展，我们分成四个维度来分别看一下，如下图所示：
-```html
-{% raw %}<figure>
+<figure>
    <img src="{{ "/media/img/2019/1025bigdataai.png" | absolute_url }}" />
    <figcaption>BigData And AI.</figcaption>
-</figure>{% endraw %}
-```
+</figure>
 
 ## 数据采集
 数据采集说的是数据源的问题，分以下几点进行说明：
