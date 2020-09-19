@@ -6,6 +6,7 @@ menutitle:         "关于战争电影"
 category:          Features
 author:            tangoo
 tags:              WAR
+comments:          true
 ---
 
 从17年开始，每年都会刷一遍自己喜欢的战争电影电视剧，这种粗粒、残酷、现实的演绎，总是让人看了难以忘怀，战争对于我们一生来讲都不希望亲眼去见证，只希望世界永远和平。

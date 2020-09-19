@@ -3,7 +3,7 @@ layout:    about
 permalink: "/about"
 author:    tangoo
 keywords:  about person demo example
-title:     About Jekyll Decent
+title:     About Me
 menutitle: About
 weight:    90
 excerpt:   This page contains the curriculum vitae (CV) of the author.
