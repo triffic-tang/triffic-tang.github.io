@@ -6,11 +6,11 @@ default:                                                      # Fallback if noth
   bio:          不明所以的言说                               # OPTIONAL: text below author name in posts
   location:     China                                       # OPTIONAL: used to display location of the author
   website:                          						  # OPTIONAL: link to the author of a post
-  email:        "twtong@iCloud.com"                                              # OPTIONAL: used in the about page
+  email:                                                      # OPTIONAL: used in the about page
   twitter:                                                    # OPTIONAL: used in the about page
   linkedin:                                                   # OPTIONAL: used in the about page
   xing:                                                       # OPTIONAL: used in the about page
-  github:       "triffic-tang"                                # OPTIONAL: used in the about page
+  github:                                                     # OPTIONAL: used in the about page
   stackoverflow:                                              # OPTIONAL: used in the about page
   facebook:                                                   # OPTIONAL: used in the about page
   gplus:                                                      # OPTIONAL: used in the about page
@@ -23,16 +23,6 @@ default:                                                      # Fallback if noth
   twitch:                                                     # OPTIONAL: used in the about page
   s500px:                                                     # OPTIONAL: used in the about page
   reddit:                                                     # OPTIONAL: used in the about page
-jdecent:
-  initial:      Tangoo
-  name:         "Tangoo"
-  cover:        /assets/mountain-alternative-cover.jpg  
-  picture:      /assets/tangoo.jpg
-  bio:          This is my bio!
-  location:     China
-  email:        ""
-  twitter:      ""
-  twitch:       ""
 tangoo:
   initial:      tangoo
   name:         "Tangoo"
@@ -40,7 +30,8 @@ tangoo:
   picture:      /assets/tangoo.jpg
   bio:          不明所以的言说
   location:     China
-  website:      "https://justtang.com"
+  website:      "https://justtang.com/about"
   email:        "twtong@iCloud.com"
   twitter:      ""
-  github:       ""
+  github:       "triffic-tang"
+  stackoverflow: "triffic"
