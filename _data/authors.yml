@@ -1,8 +1,8 @@
 default:                                                      # Fallback if nothing is specified
-  initial:      jdecent                                       # used for author lookup in posts and for first two characters in the about page back button
-  name:         "Jekyll Decent"                               # used to display author name
+  initial:      Tangoo                                       # used for author lookup in posts and for first two characters in the about page back button
+  name:         "Tangoo"                               # used to display author name
   cover:        /assets/mountain-alternative-cover.jpg        # OPTIONAL: defines location of cover image in about page
-  picture:      /assets/johndoe.jpg                           # OPTIONAL: author picture
+  picture:      /assets/tangoo.jpg                           # OPTIONAL: author picture
   bio:          This is my bio!                               # OPTIONAL: text below author name in posts
   location:     Germany                                       # OPTIONAL: used to display location of the author
   website:                          						  # OPTIONAL: link to the author of a post
@@ -24,10 +24,10 @@ default:                                                      # Fallback if noth
   s500px:                                                     # OPTIONAL: used in the about page
   reddit:                                                     # OPTIONAL: used in the about page
 jdecent:
-  initial:      jdecent
-  name:         "Jekyll Decent"       
+  initial:      Tangoo
+  name:         "Tangoo"
   cover:        /assets/mountain-alternative-cover.jpg  
-  picture:      /assets/johndoe.jpg  
+  picture:      /assets/tangoo.jpg
   bio:          This is my bio!
   location:     Germany
   email:        "-"   
