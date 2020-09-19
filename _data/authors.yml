@@ -36,6 +36,7 @@ jdecent:
 tangoo:
   initial:      tangoo
   name:         "Tangoo"
+  cover:        /assets/home-top-background.jpg
   picture:      /assets/tangoo.jpg
   bio:          不明所以的言说
   location:     China
