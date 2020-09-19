@@ -3,7 +3,7 @@ default:                                                      # Fallback if noth
   name:         "Tangoo"                               # used to display author name
   cover:        /assets/mountain-alternative-cover.jpg        # OPTIONAL: defines location of cover image in about page
   picture:      /assets/tangoo.jpg                           # OPTIONAL: author picture
-  bio:          This is my bio!                               # OPTIONAL: text below author name in posts
+  bio:          不明所以的言说                               # OPTIONAL: text below author name in posts
   location:     China                                       # OPTIONAL: used to display location of the author
   website:                          						  # OPTIONAL: link to the author of a post
   email:        "twtong@iCloud.com"                                              # OPTIONAL: used in the about page
@@ -31,8 +31,8 @@ jdecent:
   bio:          This is my bio!
   location:     China
   email:        ""
-  twitter:      "-"    
-  twitch:       "-"
+  twitter:      ""
+  twitch:       ""
 jwillmer:
   initial:      tangoo
   name:         "Tangoo"

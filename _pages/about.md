@@ -10,8 +10,6 @@ excerpt:   This page contains the curriculum vitae (CV) of the author.
 --- 
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 
-If you like this theme and like to show your appreciation then please leave a star in the GitHub repository or [buy me a coffee](https://www.paypal.me/jenswillmer/3) - Thank you!
-
 一位梦想成为作家的程序员，对文字充满热爱，这里是我的自留地，写一些关于生活、投资的思考，没什么体系，想写就写，随性。
 
 同时爱看电影，尤其中意战争片，每年都会刷一遍：
