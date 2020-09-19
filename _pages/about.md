@@ -1,7 +1,7 @@
 ---
 layout:    about
 permalink: "/about"
-author:    jdecent
+author:    tangoo
 keywords:  about person demo example
 title:     About Jekyll Decent
 menutitle: About
