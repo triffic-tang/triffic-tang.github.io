@@ -6,11 +6,11 @@ default:                                                      # Fallback if noth
   bio:          This is my bio!                               # OPTIONAL: text below author name in posts
   location:     China                                       # OPTIONAL: used to display location of the author
   website:                          						  # OPTIONAL: link to the author of a post
-  email:                                                      # OPTIONAL: used in the about page
+  email:        "twtong@iCloud.com"                                              # OPTIONAL: used in the about page
   twitter:                                                    # OPTIONAL: used in the about page
   linkedin:                                                   # OPTIONAL: used in the about page
   xing:                                                       # OPTIONAL: used in the about page
-  github:                                                     # OPTIONAL: used in the about page
+  github:       "triffic-tang"                                # OPTIONAL: used in the about page
   stackoverflow:                                              # OPTIONAL: used in the about page
   facebook:                                                   # OPTIONAL: used in the about page
   gplus:                                                      # OPTIONAL: used in the about page
@@ -30,7 +30,7 @@ jdecent:
   picture:      /assets/tangoo.jpg
   bio:          This is my bio!
   location:     China
-  email:        "twtong@iCloud.com"
+  email:        ""
   twitter:      "-"    
   twitch:       "-"
 jwillmer:
@@ -40,5 +40,5 @@ jwillmer:
   bio:          All about technology 
   location:     China
   website:      "https://justtang.com"
-  twitter:      jenswillmer
-  github:       triffic-tang
+  twitter:      ""
+  github:       ""
