@@ -7,7 +7,7 @@
 
 # Site settings
 title:            You Never Try You Never Know
-subtitle:         Tangoo Blog
+subtitle:         ""
 description:      This is the jekyllTheme example blog. It only exists to demonstrate how the theme looks and feels.
 keywords:         demo theme example github jekyll features
 language:         "en" # default language of the blog. Language codes: http://www.w3schools.com/tags/ref_language_codes.asp
@@ -15,7 +15,7 @@ language:         "en" # default language of the blog. Language codes: http://ww
 baseurl:          "" # the subpath of your site, e.g. /blog
 url:              "" # the base hostname & protocol for your site. Have a look at robots.txt as well!
 permalink:        /blog/:categories/:title
-cover:            /assets/home-top-background.jpg
+cover:            /assets/mountain-cover.jpg
 disqus_shortname: "jekylldecent"
 
 # Build settings
