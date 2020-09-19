@@ -4,7 +4,7 @@ title:             "关于战争电影"
 date:              2019-12-25 18:25:00 +0300
 menutitle:         "关于战争电影"
 category:          Features
-author:            Tangoo
+author:            tangoo
 tags:              WAR
 ---
 
