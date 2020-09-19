@@ -15,21 +15,21 @@ tags:              WAR
 ## 每年必刷的3部战争电影
 看清战争的残酷，我们更能珍惜和平的不易，永远不要嫌弃和平的长长久久。
 <div class="album">
-   <figure>
+   <figure class="middle">
       <img src="{{ "/media/img/2019/band of brothers.jpg" | absolute_url }}" />
       <figcaption>BAND OF BROTHERS</figcaption>
    </figure>   
-   <figure>
+   <figure class="middle">
       <img src="{{ "/media/img/2019/the pacific.jpg" | absolute_url }}" />
       <figcaption>THE PACIFIC</figcaption>
    </figure>   
-   <figure>
+   <figure class="middle">
       <img src="{{ "/media/img/2019/womendefubei.jpg" | absolute_url }}" />
       <figcaption>UNSERE MUTTER AND UNSERE VATER</figcaption>
    </figure>
 </div>
 
 ## 参考引用
-[^1]: Some footnote
-[^2]: Another footnote
-[^3]: Last footnote
+> 1. Some footnote
+> 2. Another footnote
+> 3. Last footnote
