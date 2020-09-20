@@ -15,7 +15,9 @@ comments:          true
 引用官网的一段介绍：
 > Tablesaw is a high-performance, in-memory data table in Java.
 >
-> Tablesaw's design is driven by two ideas: First, few people need distributed analytics. On a single server, Tablesaw lets you work interactively with a 2,000,000,000 row table. (I plan to raise that ceiling, btw.) Second, it should be super easy to use: To that end I happily steal ideas from everything from spreadsheets to specialized column stores like KDB.
+> Tablesaw's design is driven by two ideas: 
+> - First, few people need distributed analytics. On a single server, Tablesaw lets you work interactively with a 2,000,000,000 row table. (I plan to raise that ceiling, btw.) 
+> - Second, it should be super easy to use: To that end I happily steal ideas from everything from spreadsheets to specialized column stores like KDB.
 
 我们来总结下，Tablesaw设计初衷有以下两条：
 1. 作者认为很少有人真的需要进行分布式计算分析，在单台服务器上「Tablesaw」能支持最多20亿条数据，似乎在大多数情况下都能满足用户的计算需求；
@@ -24,18 +26,18 @@ comments:          true
 
 ## Tablesaw主要功能
 既然Tablesaw宣称自己简单好用，那到底支持哪些功能呢，笔者新建了一个Maven工程玩了一把，貌似有以下功能：
-- Import data from RDBMS and CSV files, local or remote (http, S3, etc.)
-- Add and remove columns
-- Sort
-- Filter
-- Group
-- Map and reduce operations
-- Descriptive stats (mean, min, max, median, etc.)
-- Plotting for exploratory data analysis and model checking
-- Store tables in a very-fast, compressed columnar storage format
+> - Import data from RDBMS and CSV files, local or remote (http, S3, etc.)
+> - Add and remove columns
+> - Sort
+> - Filter
+> - Group
+> - Map and reduce operations
+> - Descriptive stats (mean, min, max, median, etc.)
+> - Plotting for exploratory data analysis and model checking
+> - Store tables in a very-fast, compressed columnar storage format
 
 在试用过程中有几点事项说明下：
-1. 在数据量不大的情况下，执行简单的查询操作速度很快，不像在Hive中做一个非常简单的查询都会转化成一个MapReduce作业在Hadoop集群上跑几十秒时间(当然你可以通过`set hive.fetch.task.conversion=more `，使得简单的查询不会被转化成MapReduce作业)；
+1. 在数据量不大的情况下，执行简单的查询操作速度很快，不像在Hive中做一个非常简单的查询都会转化成一个MapReduce作业在Hadoop集群上跑几十秒时间(当然你可以通过`set hive.fetch.task.conversion=more`，使得简单的查询不会被转化成MapReduce作业)；
 2. Tablesaw支持的功能还非常有限，对于复杂的组合查询会很吃力，甚至可能都做不到，Tablesaw作者在博客中强调未来会支持更多的列类型，支持更多的操作，同时把常用的机器学习算法的实现也引入进来，对于未来的设想我们拭目以待；
 3. 在借助Tablesaw做数据展示的时候，使用的是XCharts。
 
