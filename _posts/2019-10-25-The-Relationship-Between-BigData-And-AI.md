@@ -3,7 +3,7 @@ layout:            post
 title:             "大数据技术与人工智能技术之间的关系"
 date:              2019-10-25 18:25:00 +0300
 menutitle:         "大数据技术与人工智能技术之间的关系"
-category:          Features
+category:          Bigdata
 author:            tangoo
 tags:              AI BIGDATA
 ---
