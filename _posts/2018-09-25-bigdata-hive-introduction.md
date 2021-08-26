@@ -20,7 +20,7 @@ Hive本质上是一个数据仓库，但不存储数据(只存储元数据)，�
 
 了解完以上这些基础信息之后，回到Hive这款开源工具本身，Hive建立在Hadoop之上，两者之间的依赖关系如下图1所示。
 <figure>
-   <img src='{{ "/img/2018/hive-arch.png" | absolute_url }}' />
+   <img src='{{ "/assets/images/2018/hive-arch.png" | absolute_url }}' />
    <figcaption>图1：THE ARCHITECTURE OF HIVE WITH HADOOP.</figcaption>
 </figure>￼
 
@@ -53,7 +53,7 @@ Hive执行过程可以用下图2进行说明，我们以一条查询语句为例
 select name,age from test where age>=25;
 ```
 <figure>
-   <img src='{{ "/img/2018/hive-exec.png" | absolute_url }}' />
+   <img src='{{ "/assets/images/2018/hive-exec.png" | absolute_url }}' />
    <figcaption>图2：EXECUTION PROCESS OF HIVE WITH HADOOP.</figcaption>
 </figure>￼
 
