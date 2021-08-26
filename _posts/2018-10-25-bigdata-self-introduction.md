@@ -4,6 +4,7 @@ title: "Tablesaw简介"
 author: "Tangoo"
 categories: Bigdata
 tags: [tablesaw,hive]
+image: fantasy.jpg
 ---
 
 最近一直在学习大数据相关的内容，技术坑很多，水很深。偶然间在一位博主的博客中看到了「Tablesaw」这款开源工具，号称「MAKING BIGDATA SAMLL AGAIN」，觉得很神奇，遂前去一探究竟。
