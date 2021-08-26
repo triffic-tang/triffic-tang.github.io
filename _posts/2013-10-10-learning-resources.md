@@ -11,7 +11,7 @@ The beauty of computer programming is that you do not need to formally go to sch
 
 ## [Free Code Camp](https://www.freecodecamp.org/)
 
-My personal favourite for learning full stack web development. Tst. They offer a great front and back end curriculum 
+My personal favourite for learning full stack web development. Tst. something. They offer a great front and back end curriculum 
 that requires you to complete a variety of projects in order to apply the knowledge that you learn during the lessons. As a bonus, at the end of the curriculum you will have a few impressive projects under your belt for your portfolio.
 
 ## [Codecademy](https://www.codecademy.com/)
