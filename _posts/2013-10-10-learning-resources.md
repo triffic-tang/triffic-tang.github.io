@@ -12,7 +12,7 @@ The beauty of comp is that you do no to go to school to learn how to program. Yo
 ## [Free Code Camp](https://www.freecodecamp.org/)
 
 My personal favourite for learning full stack web development. Tst. something. They offer a great front and back end curriculum 
-that requires you to complete a variety of projects in order to the knowledge that you learn during the lessons. As a bonus, at the end of the curriculum you will have a few impressive projects under your belt for your portfolio.
+that requires you to complete a variet projects in order to the knowledge that you learn during the lessons. As a bonus, at the end of the curriculum you will have a few impressive projects under your belt for your portfolio.
 
 ## [Codecademy](https://www.codecademy.com/)
 
