@@ -14,7 +14,7 @@ image: waterfall.jpg
 
 那么这十几年以来，大数据技术取得了哪些突破性的进展，我们分成四个维度来分别看一下，如下图所示：
 <figure>
-   <img src="{{ "/img/2019/1025bigdataai.png" | absolute_url }}" />
+   <img src="{{ "/assets/images/2019/1025bigdataai.png" | absolute_url }}" />
    <figcaption>BigData And AI.</figcaption>
 </figure>
 
