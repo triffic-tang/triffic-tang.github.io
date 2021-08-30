@@ -24,7 +24,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: A man who lives in the past
+title: MAN WHO LIVES IN THE PAST
 email: twtong@icloud.com
 author: triffic-tang
 copyright: Copyright © 2020-2021
