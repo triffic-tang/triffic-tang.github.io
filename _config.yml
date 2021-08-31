@@ -122,7 +122,7 @@ yat:
 # Code badge setting
 # You can enable or disable the code badge and so on
 code_badge:
-   enabled: false
+   enabled: true
    color: "#fff"
    background_color: "#ff4e00"
    text_transform: "capitalize"  # ("uppercase", "lowercase", "capitalize")
